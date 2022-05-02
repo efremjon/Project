@@ -1,0 +1,157 @@
+{% extends 'Company/company-base.html' %}
+{% block content %}
+  <!-- ====== Main -->
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Manage Agents</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{%  url 'admin-dashbord'  %}">Home</a></li>
+          <li class="breadcrumb-item active">View Agents</li>
+        </ol>
+        <div class="text-end">
+            <a href="{%  url 'add-agent'  %}" class="item-end">
+                <button type="button" class="btn btn-sm rounded-pill btn-secondary"><i class="bi bi-plus me-1"></i>Add Agent</button>
+              </a>
+        </div>
+        
+      </nav>
+      
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">  
+            <div class="card">
+              <div class="card-body">
+                <!-- Table with stripped rows -->
+                <table class="table datatable">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Agent</th>
+                      <th scope="col">Region</th>
+                      <th scope="col">Area</th>
+                      <th scope="col">Phone</th>    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td><a href="{%  url 'agent-detail'  %}">Mesfin Alemu</a></td>
+                      <td>Western</td>
+                      <td>Jimma</td>
+                      <td>0914336677</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>G/Egziabher G/Selassie</td>
+                      <td>Central</td>
+                      <td>Adama</td>
+                      <td>0945789544</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Legese Getachew</td>
+                      <td>North Eastern</td>
+                      <td>Semera</td>
+                      <td>0984229653</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Gosa Zenebe</td>
+                      <td>Southern</td>
+                      <td>Awasa</td>
+                      <td>0972118876</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Mikiyas Gashaw</td>
+                      <td>Northern</td>
+                      <td>Gondar</td>
+                      <td>0912551111</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Gosa Zenebe</td>
+                        <td>Southern</td>
+                        <td>Awasa</td>
+                        <td>0972118876</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>Mikiyas Gashaw</td>
+                        <td>Northern</td>
+                        <td>Gondar</td>
+                        <td>0912551111</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>Dagne Tamrat</td>
+                        <td>Southern</td>
+                        <td>Shashemane</td>
+                        <td>0972118876</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Mikiyas Gashaw</td>
+                        <td>Northern</td>
+                        <td>Gondar</td>
+                        <td>0912551111</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10</th>
+                        <td>Zemedkun Taye</td>
+                        <td>Southern</td>
+                        <td>Wolayta</td>
+                        <td>0972118876</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">11</th>
+                        <td>Mikiyas Gashaw</td>
+                        <td>Northern</td>
+                        <td>Gondar</td>
+                        <td>0912551111</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">12</th>
+                        <td>Gosa Zenebe</td>
+                        <td>Southern</td>
+                        <td>Awasa</td>
+                        <td>0972118876</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">13</th>
+                        <td>Mikiyas Gashaw</td>
+                        <td>Northern</td>
+                        <td>Gondar</td>
+                        <td>0912551111</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">14</th>
+                        <td>Gosa Zenebe</td>
+                        <td>Southern</td>
+                        <td>Awasa</td>
+                        <td>0972118876</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">15</th>
+                        <td>Mikiyas Gashaw</td>
+                        <td>Northern</td>
+                        <td>Gondar</td>
+                        <td>0912551111</td>
+                      </tr>
+                  </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+  
+
+  </main><!-- End #main -->
+{% endblock %}

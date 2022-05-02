@@ -1,0 +1,154 @@
+{% extends 'Company/company-base.html'%}
+
+{% block content%}
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Manage Agents</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'admin-dashbord' %}">Home</a></li>
+          <li class="breadcrumb-item">Manage Agents</li>
+          <li class="breadcrumb-item active">Add Agent</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+      <section class="section add-agent">
+        <div class="row">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
+              <div class="card mb-5">
+                <div class="card-body">         
+                    <h5 class="card-title text-center pb-0 fs-4 text-warning">Agent Registration form</h5>
+                    <div class="container  p-3 m-3">
+                      <form class="row g-3 " method="POST" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <div class="row border p-3 m-2">
+                              <div class="col-md-6" >
+                                  <label for="validationDefault01" class="form-label">First name:</label>
+                                  <input type="text" class="form-control "  name="first_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefault02" class="form-label">Last name:</label>
+                                  <input type="text" class="form-control" name="last_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefault02" class="form-label">Email:</label>
+                                  <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefaultUsername" class="form-label">Username</label>
+                                  <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                    <input type="text" class="form-control" name="username"   aria-describedby="inputGroupPrepend2" required>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefault03" class="form-label">Password</label>
+                                  <input type="password" class="form-control"  name="password1" required>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefault03" class="form-label">Confirm Password</label>
+                                  <input type="password" class="form-control"  name="password2" required>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefault03" class="form-label">Phone No. 1</label>
+                                  <input type="text" class="form-control" name="phone1" required>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="validationDefault03" class="form-label">Phone No. 2</label>
+                                  <input type="text" class="form-control" name="phone2" required>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="validationDefault03" class="form-label">Facebook</label>
+                                  <input type="text" class="form-control" name="facebook" required>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="validationDefault03" class="form-label">Telgram</label>
+                                  <input type="text" class="form-control"  name="telegram" required>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="validationDefault03" class="form-label">Instagram</label>
+                                  <input type="text" class="form-control"  name="instagram" required>
+                                </div>
+                                <div class="col-md-12">
+                                  <label for="validationTextarea" class="form-label">About</label>
+                                  <textarea class="form-control "  placeholder="Required example textarea" name="about" required></textarea>
+                                </div>
+                                <div class="col-md-3">
+                                  <label for="validationDefault03" class="form-label">Profile_Pic</label>
+                                  <input type="file" class="form-control"  name="img" required>
+                                </div>       
+                          </div>
+                          <div class="row border p-3 m-2">
+                              <div class="col-md-6">
+                              <label for="validationDefault04" class="form-label">Region</label>
+                              <select class="form-select"  required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>...</option>
+                              </select>
+                              </div>
+              
+                              <div class="col-md-6">
+                                  <label for="validationDefault03" class="form-label">City</label>
+                                  <input type="text" class="form-control" name="city" required>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="validationDefault03" class="form-label">Address</label>
+                                  <input type="text" class="form-control" name="address" required>
+                                </div>
+                                <div class="col-md-8">
+                                  <label for="validationDefault03" class="form-label">Location</label>
+                                  <input type="text" class="form-control" name="location" required>
+                                </div>
+                               
+                          </div>
+              
+              
+                          <div class="row border p-2 m-2">
+                              <div class="col-md-6">
+                                  <label for="validationDefault03" class="form-label">TIN No.</label>
+                                  <input type="text" class="form-control" name="TIN_NO" required>
+                                </div>
+                                <div class="col-md-3">
+                                  <label for="validationDefault03" class="form-label">Agreement Paper</label>
+                                  <input type="file" class="form-control" name="agreement" required>
+                                </div>  
+                                <div class="col-md-3">
+                                  <label for="validationDefault03" class="form-label">Licenc</label>
+                                  <input type="file" class="form-control" name="licenc" required>
+                                </div>  
+                          </div>
+                            <!-- <div class="col-md-6">
+                              <label for="validationDefault04" class="form-label">State</label>
+                              <select class="form-select" id="validationDefault04" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>...</option>
+                              </select>
+                            </div> -->
+                            
+                            <div class="col-12">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" required>
+                                <label class="form-check-label" for="invalidCheck2">
+                                  Agree to terms and conditions
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <button class="btn btn-primary" type="submit">Submit form</button>
+                            </div>
+                       </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  </main><!-- End #main -->
+
+  {% endblock %}
