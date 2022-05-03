@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import *
+from .form import passwordform
 
 # Create your views here.
 
@@ -60,21 +61,22 @@ def add_agent(request):
 
 
 def show_profile(request):
-    admin=Admin.objects.get(id=request.user.id)
-    usermodel=admin.user
+    users=User.objects.get(id=request.user.id)
+    admin=users.admin
     context = {
         'admin':admin ,
-        'usermodel':usermodel
+        
     }
 
     return render(request,'Company/show_profile.html',context)
 
 def edit_profile(request):
-    admin=Admin.objects.get(id=request.user.id)
-    usermodel=admin.user
+    users=User.objects.get(id=request.user.id)
+    admin=users.admin
     context = {
         'admin':admin ,
-       }
+        
+    }
     if request.method == 'POST':
         admin.about=request.POST['about']
         admin.phone1=request.POST['phone']
@@ -85,63 +87,44 @@ def edit_profile(request):
         admin.facebook=request.POST['facebook']
         admin.telegram=request.POST['telegram']
         admin.instagram=request.POST['instagram']
-        usermodel.first_name=request.POST['first_name']
-        if len(request.FILES['img']) != 0:
-            admin.profile_pic.delete()
-            admin.profile_pic=request.FILES['img']
+        users.first_name=request.POST['first_name']
+        users.last_name=request.POST['last_name']
+        users.email=request.POST['email']
         admin.save()
-        usermodel.save()
+        users.save()
         return redirect ('show_profile')
     return render(request,'Company/edit_profile.html',context)
 
 
 
 def change_password(request):
-    admin=Admin.objects.get(id=request.user.id)
-    u = User.objects.get(username__exact=request.user.username)
-    
-    
-    context = {
-        'admin':admin ,
-       }
-    if request.method == 'POST':
-        if request.POST.get("change"):
-            oldpassword=request.POST['oldpassword']
-            newpassword=request.POST['newpassword']
-            u.set_password(newpassword)
-            u.save()
-
-    return render(request,'Company/chage_password.html',context)
-
-
-def change_password_m(request):
-    admin=Admin.objects.get(id=request.user.id)
-    usermodel=admin.user
+    users=User.objects.get(id=request.user.id)
+    admin=users.admin
     
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = passwordform(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
+            return redirect('show_profile')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        form = PasswordChangeForm(request.user)
+        form = passwordform(request.user)
     context = {
         'admin':admin ,
-        'usermodel':usermodel,
+        'usermodel':users,
         'form':form
     }
     return render(request, 'Company/chage_password.html', context)
 
 def change_profile_pic(request):
-    admin=Admin.objects.get(id=request.user.id)
-    usermodel=admin.user
+    users=User.objects.get(id=request.user.id)
+    admin=users.admin
     context = {
         'admin':admin ,
-        'usermodel':usermodel
+        'usermodel':users
     }
     if request.method == 'POST':
         if len(request.FILES['img']) != 0:
@@ -154,11 +137,11 @@ def change_profile_pic(request):
     return render(request,'Company/change_profile_pic.html',context)
 
 def delete_profile_pic(request):
-    admin=Admin.objects.get(id=request.user.id)
-    usermodel=admin.user
+    users=User.objects.get(id=request.user.id)
+    admin=users.admin
     context = {
         'admin':admin ,
-        'usermodel':usermodel
+        'usermodel':users
     }
     if len(admin.profile_pic) != 0:
         admin.profile_pic.delete()
