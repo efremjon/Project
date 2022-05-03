@@ -25,7 +25,7 @@ def login_view(request):
                 login(request,user)
                 return redirect('Customer_dashbord')
         else:
-            return render(request,'Account/pages-login.html')
+            return render(request,'Account/login.html')
     return render(request,'Account/login.html')
 
 def logout_view(request):
@@ -42,6 +42,7 @@ def register_view(request):
         email=request.POST['email']
         password1=request.POST['password1']
         password2=request.POST['password2']
+        Full_Name = first_name + " " + last_name
         if password1==password2:
             if User.objects.filter(username=user_name).exists():
                 messages.info(request, 'username taken')
@@ -72,10 +73,13 @@ def SuperUser_CreateView(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            Full_Name = first_name + " " + last_name
             user=User.objects.get(username=username)
             group = Group.objects.get(name='Admin')
             user.groups.add(group)
-            Admin.objects.create(user=user)
+            Admin.objects.create(user=user,Full_Name=Full_Name)
             messages.success(request, 'Your password was successfully updated!')
             return redirect('/')
         else:
