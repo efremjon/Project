@@ -41,6 +41,7 @@
 <body>
 
   <main>
+
     <div class="container">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -48,13 +49,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-sm-12 d-flex flex-column align-items-center justify-content-center">
               <div class="card mb-5">
-               
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  {% for message in messages %}
-                {{message}}
-                {% endfor %}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+              
                 <div class="card-body">
                   <div class="d-flex justify-content-center py-4">
                     <a href="index.html" class="logo d-flex align-items-center w-auto">
@@ -106,10 +101,6 @@
                         <input type="password" name="password2" class="form-control" id="yourPassword" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
-
-                    
-                    
-
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
@@ -124,7 +115,14 @@
                       <p class="small mb-0">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
                     </div>
                   </form>
-
+                  {% if message %}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {% for message in message %}
+                  {{message}}
+                  {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  {% endif %}
                 </div>
               </div>
 
