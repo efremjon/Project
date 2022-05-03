@@ -115,12 +115,13 @@ def change_password(request):
 
 
 def change_password_m(request):
-    user=User.objects.get(id=request.user.id)
-  
+    admin=Admin.objects.get(id=request.user.id)
+    usermodel=admin.user
+    
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
-            usermodel = form.save()
+            user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
             return redirect('change_password')
@@ -128,9 +129,12 @@ def change_password_m(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'Company/chage_password.html', {
-        'form': form
-    })
+    context = {
+        'admin':admin ,
+        'usermodel':usermodel,
+        'form':form
+    }
+    return render(request, 'Company/chage_password.html', context)
 
 def change_profile_pic(request):
     admin=Admin.objects.get(id=request.user.id)
