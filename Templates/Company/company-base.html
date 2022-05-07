@@ -351,7 +351,21 @@
 
     </ul>
 </aside><!-- End Sidebar-->
- 
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'admin-dashbord' %}">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+ {% block content %}
+
+ {% endblock %}
+</main><!-- End #main -->
  <!-- ======= Footer ======= -->
  <footer id="footer" class="footer">
     <div class="copyright">

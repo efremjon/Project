@@ -71,7 +71,7 @@ def show_profile(request):
         
     }
 
-    return render(request,'Company/show_profile.html',context)
+    return render(request,'Company/profile/show_profile.html',context)
 
 def edit_profile(request):
     users=User.objects.get(id=request.user.id)
@@ -96,7 +96,7 @@ def edit_profile(request):
         admin.save()
         users.save()
         return redirect ('show_profile')
-    return render(request,'Company/edit_profile.html',context)
+    return render(request,'Company/profile/edit_profile.html',context)
 
 def change_password(request):
     users=User.objects.get(id=request.user.id)
@@ -118,7 +118,7 @@ def change_password(request):
         'usermodel':users,
         'form':form
     }
-    return render(request, 'Company/chage_password.html', context)
+    return render(request, 'Company/profile/chage_password.html', context)
 
 def change_profile_pic(request):
     users=User.objects.get(id=request.user.id)
@@ -134,8 +134,8 @@ def change_profile_pic(request):
             admin.save()
             return redirect ('edit_profile')
         else:
-            return render(request,'Company/change_profile_pic.html',context)
-    return render(request,'Company/change_profile_pic.html',context)
+            return render(request,'Company/profile/change_profile_pic.html',context)
+    return render(request,'Company/profile/change_profile_pic.html',context)
 
 def delete_profile_pic(request):
     users=User.objects.get(id=request.user.id)
@@ -148,14 +148,10 @@ def delete_profile_pic(request):
         admin.profile_pic.delete()
         return redirect ('edit_profile')
     
-    return render(request,'Company/edit_profile.html',context)
+    return render(request,'Company/profile/edit_profile.html',context)
 
 def add_staff(request):
-    form=NameForm()
-   
-    return render(request,'Company/example.html',{'form':form})
-
-
+    return HttpResponse('staff removed')
 
 def remove_staff(request):
     return HttpResponse('staff removed')
