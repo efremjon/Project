@@ -1,0 +1,37 @@
+{% extends 'Agent/agent-base.html' %}
+{% block content %}
+<section class="section dashboard">
+      
+  <div class="col-xl-6">
+    <div class="card p-4">
+      <form action="forms" method="post" class="">
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <input type="text" name="custname" id="custname" class="form-control" placeholder="Your Name" required>
+          </div>
+
+          <div class="col-md-6 ">
+            <input type="email" class="form-control" name="custemail" id="custemail" placeholder="Your Email" required>
+          </div>
+
+          <div class="col-md-12">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+          </div>
+
+          <div class="col-md-12">
+            <textarea class="form-control" name="message" id="message" rows="6" placeholder="Message" required></textarea>
+          </div>
+
+          <div class="col-md-12 text-center">
+
+            <button id="sendmessage" class="btn btn-warning btn-md btn-block text-white" type="submit">Send Message</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

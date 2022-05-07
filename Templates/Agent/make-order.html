@@ -1,0 +1,132 @@
+{% extends 'Agent/agent-base.html' %}
+{% block content %}
+<section class="section dashboard">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <!-- Order form with Validation -->
+          <form class="row g-3 needs-validation">
+            <h5 class="card-title text-center">Order form</h5>
+            <div class="col-md-6">
+              <label for="storeid" class="form-label">BGI Store</label>
+              <select class="form-select" id="storeid" required>
+                <option selected disabled value="">Choose store</option>
+                <option>Awasa St. George </option>
+                <option>Addis Ababa Sen'q Malt</option>
+                <option>Bahir Dar Doppel</option>
+                <option>Zeway Castle Beer</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select store
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="quantity" class="form-label">Quantity in crates</label>
+              <input type="number" min="400" class="form-control" id="quantity" required>
+              <div class="invalid-feedback">
+                Minimum of 400 crates
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone</label>
+
+                <input type="tel" class="form-control" id="phonenum" required>
+                <div class="invalid-feedback">
+                  Please provide an active phone number.
+                </div>
+              
+            </div>
+            <div class="col-md-6">
+              <label for="schedule" class="form-label">Schedule for</label>
+              <input type="date" class="form-control" id="schedule" required>
+              <div class="invalid-feedback">
+                Tight schedule not applicable
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="payment option" class="form-label">Payment</label>
+              <select class="form-select" id="paymentchoosen" required>
+                <option selected disabled value="">Choose payment option</option>
+                <option>Commertial Bank of Ethiopia</option>
+                <option>Awash Bank</option>
+                <option >Dashen Bank</option>
+              </select>
+              <div class="invalid-feedback">
+                select payment option please
+              </div>
+            </div>
+            <hr class="mb-4">   
+            <button id="checkout" class="btn btn-warning btn-md btn-block text-white" type="button">Continue to check out</button>
+          
+          </form><!-- End  of order form -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- order summary -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center">Order summary</h5>
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between lh-con  densed">
+                <div>
+                  <h6 class="my-0">Store</h6>
+                </div>
+                <span class="text-muted" id="storedisplay" ></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Quantity</h6>
+                </div>
+                <span class="text-muted" id="total_quantity"></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Price for 1 crate</h6>
+                </div>
+                <span class="text-muted" id="singlecrateprice" value="1000"></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-muted">
+                  <h6 class="my-0">Order date</h6>
+                  <small id="orderdate"></small>
+                </div>
+                <span class="text-success">
+
+                  <div class="text-success">
+                  <h6 class="my-0">Scheduled for</h6>
+                  <small id="scheduled"></small>
+                </div>
+                </span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Phone</h6>
+                </div>
+                <span class="text-muted" id="phonedisplay"></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-0">Payment</h6>
+                </div>
+                <span class="text-muted" id="payment"></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total price</span>
+                <strong id="dispTotal"></strong>
+              </li>
+            </ul>
+
+            
+            
+          </div>
+          <button class="btn btn-warning btn-md btn-block text-white" type="submit">Order</button>
+        </div>
+      </div>
+
+  </div>
+</section>
+{% endblock %}

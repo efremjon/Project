@@ -74,6 +74,7 @@ class Agent(models.Model):
     instagram = models.CharField(max_length=200, null=True)
     about = models.TextField(max_length=500, null=True)
     profile_pic=models.ImageField(null=True,blank=True, upload_to='Profile/')
+    Region=models.OneToOneField(Region,null=True, on_delete=models.CASCADE)
     city = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
     location = models.CharField(max_length=500, null=True)

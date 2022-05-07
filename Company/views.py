@@ -1,3 +1,5 @@
+from http.client import CONTINUE
+from multiprocessing import context
 from multiprocessing.dummy import JoinableQueue
 from django.contrib import messages
 from django.contrib import messages
@@ -7,7 +9,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import *
-from .form import passwordform
+from .form import passwordform,NameForm
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -16,7 +19,7 @@ def Admin_dashboard(request):
     return render(request,'Company/admin.html',{})
 
 def add_agent(request):
-
+    form =NameForm()
     if request.method == 'POST':
         first_name=request.POST['first_name']
         last_name=request.POST['last_name']
@@ -38,7 +41,8 @@ def add_agent(request):
         TIN_Num=request.POST['TIN_NO']
         agreement=request.FILES['agreement']
         licenc=request.FILES['licenc']
-        
+        form =NameForm(request.POST)
+        region = form.cleaned_data['Region']
         if password1==password2:
             if User.objects.filter(username=user_name).exists():
                 messages.info(request, 'username taken')
@@ -51,14 +55,13 @@ def add_agent(request):
                 user.save()
                 group = Group.objects.get(name='Agent')
                 user.groups.add(group)
-                Agent.objects.create(user=user,phone1=phone1,phone2=phone2,facebook=facebook,telegram=telegram,instagram=instagram, about=about,profile_pic=profile_pic,city=city,address=address,location=location,TIN_NO=TIN_Num,agreement=agreement,License=licenc,Full_Name=Full_Name)
+                Agent.objects.create(user=user,phone1=phone1,phone2=phone2,facebook=facebook,telegram=telegram,instagram=instagram, about=about,profile_pic=profile_pic,city=city,address=address,location=location,TIN_NO=TIN_Num,agreement=agreement,License=licenc,Full_Name=Full_Name,Region=region)
                 messages.info(request, 'Sucssesfull Create User')
                 return redirect ('/')
         else:
             messages.info(request, 'PASSWORD NOT MUCH')
             return render(request,'Company/add-agent.html',{})
-    return render(request,'Company/add-agent.html',{})
-
+    return render(request,'Company/add-agent.html',{'form':form})
 
 def show_profile(request):
     users=User.objects.get(id=request.user.id)
@@ -94,8 +97,6 @@ def edit_profile(request):
         users.save()
         return redirect ('show_profile')
     return render(request,'Company/edit_profile.html',context)
-
-
 
 def change_password(request):
     users=User.objects.get(id=request.user.id)
@@ -149,9 +150,12 @@ def delete_profile_pic(request):
     
     return render(request,'Company/edit_profile.html',context)
 
-
 def add_staff(request):
-    return render(request,'Company/add-staff.html',{})
+    form=NameForm()
+   
+    return render(request,'Company/example.html',{'form':form})
+
+
 
 def remove_staff(request):
     return HttpResponse('staff removed')
