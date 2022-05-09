@@ -1,0 +1,132 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block content %}
+<main class="mt-5 pt-4"> 
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <div class="container">
+                <table class="table table-striped table-bordered" style="width: 100%;" id="orderhistory">
+                    <thead>
+                        <tr>
+                            <th>Product type</th>
+                            <th>Quantity in crate</th>
+                            <th>Payment</th>
+                            <th>Price</th>
+                            <th>Date of order</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Doppel</td>
+                            <td>12</td>
+                            <td>Cash</td>
+                            <td>15000</td>
+                            <td>2011/04/25</td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>St. George</td>
+                            <td>20</td>
+                            <td>CBE</td>
+                            <td>32000</td>
+                            <td>2011/07/25</td>
+                            <td>Received</td>
+                        </tr>
+                        <tr>
+                            <td>St. George</td>
+                            <td>20</td>
+                            <td>CBE</td>
+                            <td>32000</td>
+                            <td>2011/07/25</td>
+                            <td>Received</td>
+                        </tr>
+                        <tr>
+                            <td>Castle</td>
+                            <td>10</td>
+                            <td>CBE</td>
+                            <td>18000</td>
+                            <td>2009/01/12</td>
+                            <td>Not Received</td>
+                        </tr>
+                        <tr>
+                            <td>Sen'q</td>
+                            <td>8</td>
+                            <td>CBE</td>
+                            <td>10000</td>
+                            <td>2012/03/29</td>
+                            <td>received</td>
+                        </tr>
+                        <tr>
+                            <td>Castle</td>
+                            <td>10</td>
+                            <td>CBE</td>
+                            <td>18000</td>
+                            <td>2009/01/12</td>
+                            <td>Not Received</td>
+                        </tr>
+                        <tr>
+                            <td>Doppel</td>
+                            <td>12</td>
+                            <td>Cash</td>
+                            <td>15000</td>
+                            <td>2011/04/25</td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>St. George</td>
+                            <td>20</td>
+                            <td>CBE</td>
+                            <td>32000</td>
+                            <td>2011/07/25</td>
+                            <td>Received</td>
+                        </tr>
+                        <tr>
+                            <td>St. George</td>
+                            <td>20</td>
+                            <td>CBE</td>
+                            <td>32000</td>
+                            <td>2011/07/25</td>
+                            <td>Received</td>
+                        </tr>
+                        <tr>
+                            <td>Castle</td>
+                            <td>10</td>
+                            <td>CBE</td>
+                            <td>18000</td>
+                            <td>2009/01/12</td>
+                            <td>Not Received</td>
+                        </tr>
+                        <tr>
+                            <td>Sen'q</td>
+                            <td>8</td>
+                            <td>CBE</td>
+                            <td>10000</td>
+                            <td>2012/03/29</td>
+                            <td>received</td>
+                        </tr>
+                        <tr>
+                            <td>Castle</td>
+                            <td>10</td>
+                            <td>CBE</td>
+                            <td>18000</td>
+                            <td>2009/01/12</td>
+                            <td>Not Received</td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="4" class="text-right">Total: </th>
+                            
+                            <th colspan="2"></th>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
