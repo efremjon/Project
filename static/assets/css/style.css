@@ -1075,3 +1075,21 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 13px;
   color: #012970;
 }
+
+
+.footer1 {
+  padding: 20px 0;
+  font-size: 20px;
+  transition: all 0.3s;
+  border-top: 1px solid #cddfff;
+}
+.footer1 .copyright {
+  text-align: center;
+  color: #012970;
+}
+.footer1 .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #012970;
+}
