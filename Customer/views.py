@@ -7,7 +7,7 @@ def Customer_dashboard(request):
     return render(request,'Customer/home.html')
     
 def make_order(request):
-    return render(request,'Customer/a.html')
+    return render(request,'Customer/make_ordera.html')
 
 def send_delivery(request):
     return render(request,'Customer/send-delivery-status.html')
