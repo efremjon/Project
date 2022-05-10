@@ -70,7 +70,6 @@ def show_profile(request):
         'admin':admin ,
         
     }
-
     return render(request,'Company/profile/show_profile.html',context)
 
 def edit_profile(request):

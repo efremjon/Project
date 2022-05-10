@@ -1,5 +1,6 @@
-{% include 'Company/company-base.html' %}
+{% extends 'Company/company-base.html' %}
 
+{% block content %}
 {% load static %}
 
  
@@ -52,11 +53,11 @@
                 </li>
                
               </ul>
-
-              
               <div class="tab-content pt-2">
-                {% block content %}
-                {% endblock %}
+                {% block profile %}
+
+                
+                {% endblock profile %}
               </div><!-- End Bordered Tabs -->
 
             </div>
@@ -65,4 +66,4 @@
         </div>
       </div>
     </section>
-
+{% endblock %}
