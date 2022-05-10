@@ -27,7 +27,6 @@ class Region(models.Model):
 
 class Rgeion_Manager(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
-   
     Region=models.OneToOneField(Region,null=True, on_delete=models.CASCADE)
     phone = models.CharField(max_length=200, null=True)
     Adderes = models.CharField(max_length=200, null=True)
@@ -60,9 +59,8 @@ class Product(models.Model):
     Stor=models.OneToOneField(Stor,null=True, on_delete=models.CASCADE)
     product_Name=models.CharField(max_length=200, null=True)
     product_Quintitiy=models.CharField(max_length=200, null=True)
-class Product_Price(models.Model):
-    Product=models.OneToOneField(Product,null=True, on_delete=models.CASCADE)
-    Price=models.FloatField()
+    Price=models.FloatField(null=True,blank=True)
+
 
 class Agent(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
@@ -90,6 +88,7 @@ class Advertisment(models.Model):
     auther=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     data=models.TextField(null=True,blank=True,max_length=500)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+
 class Finace_Manager(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     phone = models.CharField(max_length=200, null=True)
