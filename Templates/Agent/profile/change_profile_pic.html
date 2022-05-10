@@ -1,0 +1,32 @@
+{% extends 'Agent/profile/profile-base.html' %}
+{% block profile %}
+{% load static %}
+
+  <div class="pt-3" >
+    <!-- Profile Edit Form -->
+    
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row mb-3">
+          <div class="col col-md-4 col-lg-3">
+          
+            <h5>Change Profile Image</h5>
+          </div>
+          <div class="col col-md-4 col-lg-2">
+            {% if admin.profile_pic %}
+            <img src="{{admin.profile_pic.url}}" alt="Profile" width="150px">
+            {% endif %}
+           
+              <div class="d-grid gap-2 col-12 mx-auto pt-2">
+                <input type="file" class="btn btn-primary btn-sm" name="img" >
+                <button type="submit" class="btn btn-warning">Update</button>
+            
+              </div>
+        </div>
+      </div>
+    </form>
+    <!-- End Profile Edit Form -->
+  </div>
+
+  
+  {% endblock profile %}

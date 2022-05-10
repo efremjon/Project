@@ -1,59 +1,69 @@
-{% extends 'Company/company-base.html' %}
-{% load static %}
+{% extends 'Agent/agent-base.html' %}
+
 {% block content %}
-<section class="section profile">
-  <div class="row">
-    <div class="col-xl-4">
+{% load static %}
 
-      <div class="card">
-        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+ 
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
 
-          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          <h2>Kevin Anderson</h2>
-          <h3>Web Designer</h3>
-          <div class="social-links mt-2">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+              {% if user.admin.profile_pic %}
+              <img src="{{user.admin.profile_pic.url}}" alt="Profile" >
+              {% endif %}
+              <h2>{{user.first_name}} {{user.last_name}}</h2>
+              <h3>Company Admin</h3>
+              <div class="social-links mt-2">
+                {% if user.admin.telegram and user.admin.telegram != 'None' %}
+                <a href="{{user.admin.telegram}}" class="telegram"><i class="bi bi-telegram"></i></a>
+                {% endif %}
+
+                {% if user.admin.facebook and user.admin.facebook != 'None' %}
+                <a href="{{user.admin.facebook}}" class="facebook"><i class="bi bi-facebook"></i></a>
+                {% endif %}
+
+                {% if user.admin.instagram and user.admin.instagram != 'None' %}
+                <a href="{{user.admin.instagram}}" class="instagram"><i class="bi bi-instagram"></i></a>
+                {% endif %}
+
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-xl-8">
-
-      <div class="card">
-        <div class="card-body pt-3">
-          <!-- Bordered Tabs -->
-          <ul class="nav nav-tabs nav-tabs-bordered">
-
-            <li class="nav-item">
-              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-            </li>
-
-            <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
-            </li>
-
-          </ul>
-          <div class="tab-content pt-2">
-
-           {% block profile %}
-
-
-           {% endblock profile %}
-
-          </div><!-- End Bordered Tabs -->
 
         </div>
-      </div>
 
-    </div>
-  </div>
-</section>
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+        
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="{% url 'show_profile' %}">Overview</a>
+                </li>
+                <li class="nav-item">
+                 
+                  <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
+                </li>
+               
+              </ul>
+              <div class="tab-content pt-2">
+                {% block profile %}
+
+                
+                {% endblock profile %}
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 {% endblock %}

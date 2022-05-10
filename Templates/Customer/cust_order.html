@@ -1,0 +1,157 @@
+{% extends 'Customer/Customer-base.html'%}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+    <div class="container mt-5 pt-5">
+      <section class="section ">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <!-- Order form with Validation -->
+                  <form class="row g-3 needs-validation">
+                    <h5 class="card-title text-center">Checkout form</h5>
+                    <div class="col-md-3">
+                      <input type="number" min="4" class="form-control" id="quantity_george" placeholder="st. george" required>
+                      <div class="invalid-feedback">
+                        Minimum of 4 crates
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="number" min="4" class="form-control" id="quantity_doppel" placeholder="Doppel" required>
+                      <div class="invalid-feedback">
+                        Minimum of 4 crates
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="number" min="4" class="form-control" id="quantity_castle" placeholder="Castle beer" required>
+                      <div class="invalid-feedback">
+                        Minimum of 4 crates
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="number" min="4" class="form-control" id="quantity_senq" placeholder="Sen'q malt" required>
+                      <div class="invalid-feedback">
+                        Minimum of 4 crates
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label">Phone</label>
+      
+                        <input type="tel" class="form-control" id="phonenum" required>
+                        <div class="invalid-feedback">
+                          Please provide an active phone number.
+                        </div>
+                    </div>
+                    <hr class="mb-4"> 
+                    <div class="col-md-6">
+                      <label for="payment option" class="form-label">Payment</label>
+                      <select class="form-select" id="paymentchoosen" required>
+                        <option selected disabled value="">Choose payment option</option>
+                        <option>Commertial Bank of Ethiopia</option>
+                        <option>Awash Bank</option>
+                        <option >Dashen Bank</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        select payment option please
+                      </div>
+                    </div>
+                    <hr class="mb-4">   
+                    <button id="checkout" class="btn btn-warning btn-md btn-block text-white" type="button">Continue to check out</button>
+                  
+                  </form><!-- End  of order form -->
+                  </div>
+                </div>
+              </div>
+              <!-- order summary -->
+              <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Order summary</h5>
+                    <ul class="list-group">
+                      <li class="list-group-item d-flex justify-content-between lh-con  densed">
+                        <div>
+                          <h6 class="my-0">Product</h6>
+                        </div>
+                        <div>
+                          <h6 class="my-0">Quantity</h6>
+                        </div>
+                        <div>
+                          <h6 class="my-0">Price</h6>
+                        </div>
+                        
+                      </li>
+                     
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">St.George</h6>
+                        </div>
+                        <span class="text-muted" id="show_george"></span>
+                        <span class="text-muted" id="george_price"></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                          <div>
+                            <h6 class="my-0">Doppel</h6>
+                          </div>
+                          <span class="text-muted" id="show_doppel"></span>
+                          <span class="text-muted" id="doppel_price"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                          <div>
+                            <h6 class="my-0">Castle</h6>
+                          </div>
+                          <span class="text-muted" id="show_castle"></span>
+                          <span class="text-muted" id="castle_price"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                          <div>
+                            <h6 class="my-0">Sen'q</h6>
+                          </div>
+                          <span class="text-muted" id="show_senq"></span>
+                          <span class="text-muted" id="senq_price"></span>
+                        </li>
+                       
+                        <li class="list-group-item d-flex justify-content-between">
+                          <span>Total price</span>
+                          <span class="text-muted" id="show_total_quantity"></span>
+                          <span class="text-muted" id="show_total_price"></span>
+                        </li>
+                      <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-muted">
+                          <h6 class="my-0">Order date</h6>
+                        </div>
+                        <span class="text-success">
+    
+                          <div class="text-success">
+                              <span id="orderdate"></span>
+                        </div>
+                        </span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Phone</h6>
+                        </div>
+                        <span class="text-muted" id="phonedisplay"></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Payment</h6>
+                        </div>
+                        <span class="text-muted" id="payment"></span>
+                      </li>
+                    </ul>  
+                  </div>
+                  <button id="orderbtn" class="btn btn-warning btn-md btn-block text-white" type="submit">Order</button>
+                </div>
+              </div>
+    
+          </div>
+        </section>
+    </div>
+    <br>
+    <br>
+    <br>
+{% endblock %}
