@@ -33,7 +33,7 @@ class Agent_Store(models.Model):
     Store_Name = models.CharField(max_length=200, null=True)
     Location = models.CharField(max_length=200, null=True)
 
-class Store_Manager(models.Model):
+class Agent_Store_Manager(models.Model):
 	user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
 	Store=models.OneToOneField(Agent_Store,null=True, on_delete=models.CASCADE)
 	Agent=models.OneToOneField(Agent,null=True, on_delete=models.CASCADE)
@@ -47,15 +47,15 @@ class Store_Manager(models.Model):
 	def __str__(self):
 		return self.user.first_name
 
-class Vichel(models.Model):
+class Vehicle(models.Model):
 	vichel_type = models.CharField(max_length=200, null=True)
 	vichel_No = models.CharField(max_length=200, null=True)
 	Agent=models.OneToOneField(Agent,null=True, on_delete=models.CASCADE)
 
-class Diraver(models.Model):
+class Driver(models.Model):
 	user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
 	Agent=models.OneToOneField(Agent,null=True, on_delete=models.CASCADE)
-	Vichel=models.OneToOneField(Vichel,null=True, on_delete=models.CASCADE)
+	Vichel=models.OneToOneField(Vehicle,null=True, on_delete=models.CASCADE)
 	phone1 = models.CharField(max_length=200, null=True)
 	Adderes = models.CharField(max_length=200, null=True)
 	about=models.TextField(null=True,blank=True,max_length=500)
@@ -66,7 +66,7 @@ class Diraver(models.Model):
 	def __str__(self):
 		return self.user.first_name
 
-class Agent_fince(models.Model):
+class Agent_finance(models.Model):
 	user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
 	Agent=models.OneToOneField(Agent,null=True, on_delete=models.CASCADE)
 	phone1 = models.CharField(max_length=200, null=True)

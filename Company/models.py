@@ -25,26 +25,13 @@ class Region(models.Model):
 	def __str__(self) -> str:
 		return self.Region_Name
 
-class Rgeion_Manager(models.Model):
-    user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
-    Region=models.OneToOneField(Region,null=True, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=200, null=True)
-    Adderes = models.CharField(max_length=200, null=True)
-    about=models.TextField(null=True,blank=True,max_length=500)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
-    Telegram = models.CharField(max_length=200, null=True)
-    facebook = models.CharField(max_length=200, null=True)
-    instagrm = models.CharField(max_length=200, null=True)
-    def __str__(self):
-        return self.user.first_name
-
-class Stor(models.Model):
-    Stor_Name = models.CharField(max_length=200, null=True)
+class Company_Store(models.Model):
+    Store_Name = models.CharField(max_length=200, null=True)
     Location = models.CharField(max_length=200, null=True)
 
-class Stor_Manager(models.Model):
+class Company_Store_Manager(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
-    Stor=models.OneToOneField(Stor,null=True, on_delete=models.CASCADE)
+    Store=models.OneToOneField(Company_Store,null=True, on_delete=models.CASCADE)
     phone = models.CharField(max_length=200, null=True)
     Adderes = models.CharField(max_length=200, null=True)
     about=models.TextField(null=True,blank=True,max_length=500)
@@ -56,11 +43,10 @@ class Stor_Manager(models.Model):
         return self.user.first_name
     
 class Product(models.Model):
-    Stor=models.OneToOneField(Stor,null=True, on_delete=models.CASCADE)
+    Store=models.OneToOneField(Company_Store,null=True, on_delete=models.CASCADE)
     product_Name=models.CharField(max_length=200, null=True)
     product_Quintitiy=models.CharField(max_length=200, null=True)
     Price=models.FloatField(null=True,blank=True)
-
 
 class Agent(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
@@ -82,14 +68,13 @@ class Agent(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):
         return str(self.user)
-    
-    
+        
 class Advertisment(models.Model):
     auther=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     data=models.TextField(null=True,blank=True,max_length=500)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
-class Finace_Manager(models.Model):
+class Finance_Manager(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     phone = models.CharField(max_length=200, null=True)
     Adderes = models.CharField(max_length=200, null=True)
