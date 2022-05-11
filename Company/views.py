@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import *
+from Agent.models import Agent_order
 from .form import passwordform,NameForm
 from django.core.mail import send_mail
 
@@ -155,8 +156,6 @@ def add_staff(request):
 def remove_staff(request):
     return HttpResponse('staff removed')
 
-def remove_agent(request):
-    return HttpResponse('agent removed')
 
 def view_agent_orders(request):
     return HttpResponse('agent orders')
@@ -181,9 +180,33 @@ def finance_report(request):
 def advertisements(request):
     return HttpResponse('addvertisment')
 
+# agent management
 
 def agent_view(request):
-    return render(request,'Company/agent-view.html',{})
+    all_agent = Agent.objects.all()
+    context = {
+        'all_agent':all_agent,
+    }
+    return render(request,'Company/agent-view.html',context)
 
-def agent_detail(request):
-    return render(request,'Company/agent-detail.html',{})
+def agent_detail(request,pk):
+    agent = Agent.objects.get(pk=pk)
+   
+    context = {
+        'agent':agent,      
+    }
+    return render(request,'Company/agent-detail.html',context)
+
+def agent_update_contrat(request,pk):
+    agent = Agent.objects.get(pk=pk)
+    context = {
+        'agent':agent,      
+    }
+    return render(request,'Company/update_agent.html',context)
+
+def remove_agent(request,pk):
+    agent = Agent.objects.get(pk=pk)
+    context = {
+        'agent':agent,      
+    }
+    return render(request,'Company/remove_agent.html',context)

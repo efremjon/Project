@@ -1,0 +1,77 @@
+{% extends 'Customer/Customer-base.html'%}
+{% load static %}
+{% block content %}
+
+<section class="section dashboard m-5 pt-5">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Send delivery status</h5>
+
+          <!-- Default Table -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Order date</th>
+                <th scope="col">Price</th>
+                <th scope="col">Send status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>St. George</td>
+                <td>28</td>
+                <td>5/10/2022</td>
+                <td>6240</td>
+                <td>
+                    <button id="received" type="button" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i>
+                    </button>
+                    <button id="not_received" type="button" class="btn btn-danger">
+                        <i class="bi bi-exclamation-octagon"></i>
+                    </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>St. George</td>
+                <td>28</td>
+                <td>5/10/2022</td>
+                <td>6240</td>
+                <td>
+                    <button id="received" type="button" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i>
+                    </button>
+                    <button id="not_received" type="button" class="btn btn-danger">
+                        <i class="bi bi-exclamation-octagon"></i>
+                    </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>St. George</td>
+                <td>28</td>
+                <td>5/10/2022</td>
+                <td>6240</td>
+                <td>
+                    <button id="received" type="button" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i>
+                    </button>
+                    <button id="not_received" type="button" class="btn btn-danger">
+                        <i class="bi bi-exclamation-octagon"></i>
+                    </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- End Default Table Example -->
+        </div>
+      </div>
+  </section>
+
+
+
+{% endblock %}

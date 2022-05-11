@@ -18,7 +18,7 @@ from django.shortcuts import render
 
 
 def Customer_dashboard(request):
-    return render(request,'Customer/home.html')
+    return render(request,'Customer/Customer_home_page.html')
     
 # User Profile
 def show_profile(request):
@@ -62,7 +62,7 @@ def delete_profile_pic(request):
 
 
 def make_order(request):
-    return render(request,'Customer/cust_order.html')
+    return render(request,'Customer/customer_order.html')
 
 def send_delivery(request):
     return render(request,'Customer/send-delivery-status.html')

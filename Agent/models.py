@@ -32,7 +32,7 @@ class Customer(models.Model):
 class Agent_Store(models.Model):
     Store_Name = models.CharField(max_length=200, null=True)
     Location = models.CharField(max_length=200, null=True)
-
+	
 class Agent_Store_Manager(models.Model):
 	user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
 	Store=models.OneToOneField(Agent_Store,null=True, on_delete=models.CASCADE)
@@ -80,7 +80,7 @@ class Agent_finance(models.Model):
 		return self.user.first_name
 
 
-class Product(models.Model):
+class Product_in_Agent_Stor(models.Model):
 	Product_Type = (
 			('castel', 'castel'),
 			('senq', 'senq'),
@@ -92,10 +92,11 @@ class Product(models.Model):
 	Store=models.OneToOneField(Agent_Store,null=True, on_delete=models.CASCADE)
 	price = models.FloatField(null=True) 
 	Agent=models.OneToOneField(Agent,null=True, on_delete=models.CASCADE)
+	quantity=models.IntegerField(null=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 	def __str__(self):
-		return self.name
+		return self.Type
 
 class Agent_order(models.Model):
 	STATUS = (
@@ -110,7 +111,7 @@ class Agent_order(models.Model):
 			) 
 
 	Agent = models.ForeignKey(Agent, on_delete= models.SET_NULL, null=True)
-	product = models.ForeignKey(Product, on_delete= models.SET_NULL, null=True)
+	product = models.ForeignKey(Product_in_Agent_Stor, on_delete= models.SET_NULL, null=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 	status = models.CharField(max_length=200, null=True, choices=STATUS)
 	Payment_Opetion =models.CharField(max_length=200, null=True, choices=Payment_Opetion)
