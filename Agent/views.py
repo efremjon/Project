@@ -19,12 +19,7 @@ def Agent_dashboard(request):
 # user profile part
 
 def show_profile(request):
-    users=User.objects.get(id=request.user.id)
-    agent=users.agent
-    context = {
-        'admin':agent ,
-    }
-    return render(request,'Agent/profile/show_profile.html',context)
+    return render(request,'Agent/profile/show_profile.html')
 
 def edit_profile(request):
     users=User.objects.get(id=request.user.id)

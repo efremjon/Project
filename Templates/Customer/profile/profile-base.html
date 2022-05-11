@@ -1,20 +1,19 @@
-{% extends 'Customer/Customer-base.html' %}
-
+{% extends 'Customer/customer-base.html' %}
 {% block content %}
 {% load static %}
-<div class="container-fluid p-5 mt-5">
+
  
-    <section class="section profile">
+    <section class="section p-5 mt-5">
       <div class="row">
         <div class="col-xl-4">
 
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-              {% if user.admin.profile_pic %}
-              <img src="{{user.admin.profile_pic.url}}" alt="Profile" >
+              {% if user.customer.profile_pic %}
+              <img src="{{user.profile_pic.url}}" alt="Profile" >
               {% endif %}
               <h2>{{user.first_name}} {{user.last_name}}</h2>
-              <h3>Company Admin</h3>
+              <h3>Hotel Name</h3>
               <div class="social-links mt-2">
                 {% if user.admin.telegram and user.admin.telegram != 'None' %}
                 <a href="{{user.admin.telegram}}" class="telegram"><i class="bi bi-telegram"></i></a>
@@ -42,25 +41,22 @@
         
               <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="{% url 'show_profile' %}">Overview</a>
+                  <a class="nav-link " aria-current="page" href="{% url 'show_profile_customer' %}">Overview</a>
                 </li>
                 <li class="nav-item">
-                 
-                  <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                  <a class="nav-link" href="{% url 'edit_profile_customer' %}">Edit Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
+                  <a class="nav-link" href="{% url 'change_password_customer' %}">Change Password</a>
                 </li>
+              
                
               </ul>
               <div class="tab-content pt-2">
-               
-                  {% block profile %}
+                {% block profile %}
 
                 
-                  {% endblock profile %}
-                </div>
-                
+                {% endblock profile %}
               </div><!-- End Bordered Tabs -->
 
             </div>

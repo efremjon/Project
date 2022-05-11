@@ -6,11 +6,11 @@ urlpatterns = [
 
 #   profile part
 
-    path('show_profile/',views.show_profile,name='show_profile'),
-    path('edit_profile/',views.edit_profile,name='edit_profile'),
-    path('change_password/',views.change_password,name='change_password'),
-    path('change_profile_pic/',views.change_profile_pic,name='change_profile_pic'),
-    path('delete_profile_pic/',views.delete_profile_pic,name='delete_profile_pic'),
+    path('show_profile/',views.show_profile,name='show_profile_agent'),
+    path('edit_profile/',views.edit_profile,name='edit_profile_agent'),
+    path('change_password/',views.change_password,name='change_password_agent'),
+    path('change_profile_pic/',views.change_profile_pic,name='change_profile_pic_agent'),
+    path('delete_profile_pic/',views.delete_profile_pic,name='delete_profile_pic_agent'),
 
 
 
