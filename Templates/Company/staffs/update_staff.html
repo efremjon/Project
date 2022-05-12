@@ -1,0 +1,31 @@
+{% extends 'Company/staffs/staff-detail.html'%}
+{% block staff %}
+  
+<div class="pt-3" >
+    <!-- Profile Edit Form -->
+    
+    <form method="POST">
+      {% csrf_token %}
+      
+      <!-- <div class="row mb-3">
+        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+        <div class="col-md-8 col-lg-9">
+          <input name="job" type="text" class="form-control" id="Job" value="{{staff_detail.staff}}">
+        </div>
+      </div> -->
+
+      <div class="row mb-3">
+        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Salary</label>
+        <div class="col-md-8 col-lg-9">
+          <input name="salary" type="text" class="form-control" id="Country" value="{{staff_detail.salary}}">
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" name="save" class="btn btn-warning">Save Changes</button>
+      </div>
+      
+    </form>
+    <!-- End Profile Edit Form -->
+  </div>
+
+{% endblock staff %}

@@ -1,0 +1,119 @@
+
+
+{% extends 'Company/company-base.html'%}
+{% block content%}
+<!-- ====== Main -->
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Manage Staff</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin.html">Home</a></li>
+          <li class="breadcrumb-item">Manage staff</li>
+          <li class="breadcrumb-item active">Add staff</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+      <section class="section add-agent">
+        <div class="row">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
+              <div class="card mb-5">
+                <div class="card-body">         
+                    <h5 class="card-title text-center pb-0 fs-4 text-warning">Staff Registration form</h5>
+                  <form class="row g-3 needs-validation" novalidate>
+                    
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="stfullname" class="form-label">Full Name</label>
+                        <input type="text" name="stFullname" class="form-control" id="stFullname" required>
+                        <div class="invalid-feedback">Please, enter full name!</div>
+                      </div>
+
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="stusername" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                          <input type="text" name="stUsername" class="form-control" id="stUsername" required>
+                          <div class="invalid-feedback">Please choose a username.</div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="staffrole" class="form-label">Position</label>
+                        <select class="form-select" id="agentRegion" >
+                          <option value="1">Financial admin</option>
+                          <option value="2">Store Manager</option>
+                          <!-- ==== coordinator and promotor miwetu yimeslgnal ==== -->
+                          <option value="3">Regional Coordinator</option>
+                          <option value="4">Promotor</option>
+                        </select>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Email" class="form-label">Email</label>
+                        <input type="email" name="stEmail" class="form-control" id="stEmail" required>
+                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="stPassword" class="form-label">Password</label>
+                        <input type="password" name="stPassword" class="form-control" id="stPassword" required>
+                        <div class="invalid-feedback">Please enter password!</div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="stphone" class="form-label">Phone</label>
+                        <input type="tel" name="stPhone" class="form-control" id="stPhone" required>
+                        <div class="invalid-feedback">Please enter Phone!</div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="confirmpassword" class="form-label">Confirm Password</label>
+                        <input type="password" name="stPassword" class="form-control" id="stPassword" required>
+                        <div class="invalid-feedback">Please confirm password!</div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="stregion" class="form-label">Region</label>
+                        <select class="form-select" id="stRegion" >
+                          <option value="1">Central</option>
+                          <option value="2">Eastern</option>
+                          <option value="3">Northern</option>
+                          <option value="4">Addis Ababa</option>
+                          <option value="5">Western</option>
+                          <option value="6">North Eastern</option>
+                          <option value="7">Southern</option>
+                          <option value="8">South Western</option>
+                        </select>
+                        <div class="invalid-feedback">Please select region!</div>
+                      </div>
+
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="starea" class="form-label">Area</label>
+                        <input type="text" name="stArea" class="form-control" id="stArea" required>
+                        <div class="invalid-feedback">Please enter area!</div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="agreementpaper" class="form-label">Photo</label>
+                        <input type="file" name="staffPhoto" class="form-control" id="staffPhoto" required>
+                        <div class="invalid-feedback">Please upload photo!</div>
+                      </div>
+
+                      <div class="col-4">
+                        <button class="btn btn-warning w-100" type="submit">Add</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  </main><!-- End #main -->
+
+  {% endblock %}

@@ -26,10 +26,11 @@ urlpatterns = [
 
 # Manage Stafe
 
-    path('add-staff/',views.view_staff,name='add-staff'),
+    path('view-staff/',views.view_staff,name='view-staff'),
     path('add-staff/',views.add_staff,name='add-staff'),
-    path('remove-staff/',views.update_contrat_staff,name='remove-staff'),
-    path('remove-staff/',views.remove_staff,name='remove-staff'),
+    path('staff-detail/<int:pk>/<str:staff>',views.staff_profile,name='staff-detail'),
+    path('update-staff/<int:pk>/<str:staff>',views.update_staff,name='update-staff'),
+    path('remove-staff/<int:pk>/<str:staff>',views.remove_staff,name='remove-staff'),
 
 # end manage staff 
     path('approve-agent-orders/',views.approve_agent_orders,name='approve-agent-orders'),
@@ -39,5 +40,20 @@ urlpatterns = [
     path('advertisements/',views.advertisements,name='advertisements'),
     
      
+# Manage store part
+
+    path('view_store/',views.view_store,name='view-store'),
+    path('add_store_company/',views.add_store_company,name='add-store-company'),
+
+# end Manage store part
+
+# Manage region part
+
+    path('view_region/',views.view_region,name='view-region'),
+    path('add_region/',views.add_region,name='add-region'),
+
+# endregion part
+
+path('add_advertisments/',views.advertisments_view,name='add-advertisments'),
 
 ]

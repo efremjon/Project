@@ -258,12 +258,12 @@
       </li>
       <!-- staff -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#agents-nav"  href="#">
+        <a class="nav-link collapsed" data-bs-target="#agents-nav"  href="{% url 'view-staff' %}">
           <i class="ri-admin-line"></i><span>Manage Staff</span>
         </a>
       </li>
 
-      <!-- finance -->
+      <!-- finance
       <li class="nav-item"> 
         <a class="nav-link collapsed" data-bs-target="#finance-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-currency-dollar"></i><span>Finance</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -280,27 +280,23 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> -->
       
       <!-- store manager-->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#store-nav" data-bs-toggle="collapse" href="#">
-          <i class="ri-home-2-line"></i><span>Store</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-store' %}">
+          <i class="ri-home-2-line"></i><span>Manage Store</span></i>
         </a>
-        <ul id="store-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{% url 'store' %}">
-              <i class="ri-home-3-line"></i><span>view store</span>
-            </a>
-          </li>
-          <li>
-            <a href="{% url 'contact-store-manager' %}">
-              <i class="bi bi-telephone"></i><span>contact</span>
-            </a>
-          </li>
-        </ul>
+      
       </li>
-
+      
+      <!-- Region manager-->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-region' %}">
+          <i class="bi bi-bounding-box"></i> <span>Manage Region</span></i>
+        </a>
+        
+      </li>
       <!-- Generate report -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#reports-nav" data-bs-toggle="collapse" href="#">
@@ -322,7 +318,7 @@
       
       <!-- Post advertisement -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="{% url 'advertisements' %}">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{% url 'add-advertisments' %}">
           <i class="ri-advertisement-line"></i><span>Post adverisements</span>
         </a>
       </li>

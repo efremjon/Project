@@ -158,16 +158,61 @@ def delete_profile_pic(request):
 
 # Manage Staff 
 def view_staff(request):
-    return render(request,'Company/staffs/view_staff.html',{})
+    staff_finance_manager = Finance_Manager.objects.all()
+    staff_company_store_manager = Company_Store_Manager.objects.all()
+    context = {
+       'staff_finance_manager' :staff_finance_manager,
+       'staff_company_store_manager':staff_company_store_manager,
+    }
+    return render(request,'Company/staffs/staff-view.html',context)
+
+
+def staff_profile(request,pk,staff):
+    if staff=='Finance_manager':
+         staff_detail = Finance_Manager.objects.get(id=pk)
+         context = {'staff_detail':staff_detail}
+    elif staff=='Store_Manager':
+        staff_detail= Company_Store_Manager.objects.get(id=pk)
+        context = {'staff_detail':staff_detail}
+    else:
+        context = {}
+    return render(request,'Company/staffs/staff-detail.html',context)
+
 
 def add_staff(request):
-    return render(request,'Company/staffs/add_staff.html',{})
+    return render(request,'Company/staffs/add-staff.html',{})
 
-def update_contrat_staff(request):
-    return render(request,'Company/staffs/update_contrat.html',{})
+def update_staff(request,pk,staff):
+    if staff=='Finance_manager':
+         staff_detail = Finance_Manager.objects.get(id=pk)
+         
+         context = {'staff_detail':staff_detail}
+         if request.method == 'POST':
+            #  staff_detail.staff=request.POST['job']
+             staff_detail.salary=request.POST['salary']
+             staff_detail.save()
+             return redirect('view-staff')
+            
+    elif staff=='Store_Manager':
+        staff_detail= Company_Store_Manager.objects.get(id=pk)
+        context = {'staff_detail':staff_detail}
+    else:
+        context = {}
+    
 
-def remove_staff(request):
-    return render(request,'Company/staffs/remove_staff.html',{})
+    return render(request,'Company/staffs/update_staff.html',context)
+
+def remove_staff(request,pk,staff):
+    if staff=='Finance_manager':
+         staff_detail = Finance_Manager.objects.get(id=pk)
+         context = {'staff_detail':staff_detail}
+    elif staff=='Store_Manager':
+        staff_detail= Company_Store_Manager.objects.get(id=pk)
+        context = {'staff_detail':staff_detail}
+    else:
+        context = {}
+    return render(request,'Company/staffs/remove_staff.html',context)
+    
 
 # end Staff
 
@@ -226,3 +271,28 @@ def remove_agent(request,pk):
         'agent':agent,      
     }
     return render(request,'Company/agents/remove_agent.html',context)
+# Manage Store 
+
+def view_store(request):
+    return render(request,'Company/store/store-view.html')
+
+def add_store_company(request):
+    return render(request,'Company/store/add-store.html')
+
+# end Manage store
+
+# Manage Region
+
+def view_region(request):
+    return render(request,'Company/region/region-view.html')
+
+def add_region(request):
+    return render(request,'Company/region/add-region.html')
+
+# end Region
+
+def advertisments_view(request):
+    return render(request,'Company/advertisments/advertisments.html')
+
+
+

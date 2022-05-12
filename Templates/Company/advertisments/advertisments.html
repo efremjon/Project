@@ -1,0 +1,58 @@
+{% extends 'Company/company-base.html'%}
+
+{% block content%}
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Manage Agents</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="admin.html">Home</a></li>
+        <li class="breadcrumb-item active">Add Agents</li>
+      </ol>
+    </nav>
+    
+  </div><!-- End Page Title -->
+
+    <section class="section add-agent">
+        <div class="row">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
+              <div class="card mb-5">
+                <div class="card-body">         
+                    <h5 class="card-title text-center pb-0 fs-4 text-warning">Product advertisment</h5>
+                  <form class="row g-3 needs-validation" novalidate>
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="driver" class="form-label">Product name</label>
+                        <input type="text" name="driver" id="driver" class="form-control" required>
+                        <div class="invalid-feedback">Please enter product name!</div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                      <textarea class="form-control" name="message" id="message" rows="6" placeholder="product description" required></textarea>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="photo" class="form-label">Photo</label>
+                        <input type="file" name="driverPhoto" class="form-control" id="driverPhoto" required>
+                        <div class="invalid-feedback">Please upload photo!</div>
+                      </div>
+
+                      
+
+                    <hr class="mb-4">
+                      <div class="col-4">
+                        <button id="add_driver" class="btn btn-warning w-100 text-white" type="submit">Post</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  </main><!-- End #main -->
+
+  {% endblock %}

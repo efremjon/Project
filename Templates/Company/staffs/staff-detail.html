@@ -1,0 +1,97 @@
+
+{% extends 'Company/company-base.html'%}
+{% block content%}
+<!-- ====== Main -->
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Manage Staff</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin.html">Home</a></li>
+          <li class="breadcrumb-item">Manage staff</li>
+          <li class="breadcrumb-item active">Staff Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="card">
+          
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+              <img src="{{ staff_detail.profile_pic.url }}" alt="Profile" class="rounded-circle">
+              <h2>{{staff_detail.user.username}}</h2>
+              <h3>{{staff_detail.staff}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'staff-detail' staff_detail.id staff_detail.staff %}">Staff Detail</a>
+                </li>
+                <li class="nav-item">
+                 
+                  <a class="nav-link" href="{% url 'update-staff' staff_detail.id staff_detail.staff %}">Update </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'remove-staff' staff_detail.id staff_detail.staff %}">Remove </a>
+                </li>
+                
+              </ul>
+              <!-- Bordered Tabs -->
+              
+
+
+              <div class="tab-content pt-2">
+               {% block staff %}
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                    <div class="col-lg-9 col-md-8">{{staff_detail.user.username}} {{staff_detail.user.lastname}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Job</div>
+                    <div class="col-lg-9 col-md-8">{{staff_detail.staff}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                    <div class="col-lg-9 col-md-8">{{staff_detail.phone}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Address</div>
+                    <div class="col-lg-9 col-md-8">{{staff_detail.Adderes}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Salary</div>
+                    <div class="col-lg-9 col-md-8">{{staff_detail.salary}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Email</div>
+                    <div class="col-lg-9 col-md-8">{{staff_detail.user.email}}</div>
+                  </div>
+                </div>
+                {% endblock staff %}
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
+  {% endblock %}
