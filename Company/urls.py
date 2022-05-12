@@ -22,8 +22,16 @@ urlpatterns = [
     path('approve-agent-orders/',views.approve_agent_orders,name='approve-agent-orders'),
 # end Agent Management Part 
 
+# ////////////////////////
+
+# Manage Stafe
+
+    path('add-staff/',views.view_staff,name='add-staff'),
     path('add-staff/',views.add_staff,name='add-staff'),
+    path('remove-staff/',views.update_contrat_staff,name='remove-staff'),
     path('remove-staff/',views.remove_staff,name='remove-staff'),
+
+# end manage staff 
     path('approve-agent-orders/',views.approve_agent_orders,name='approve-agent-orders'),
     path('store/',views.store,name='store'),
     path('contact-store-manager/',views.contact_store_manager,name='contact-store-manager'),

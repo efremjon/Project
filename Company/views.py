@@ -64,6 +64,9 @@ def add_agent(request):
             return render(request,'Company/add-agent.html',{})
     return render(request,'Company/add-agent.html',{'form':form})
 
+# ////////////////
+
+# Profile
 def show_profile(request):
     users=User.objects.get(id=request.user.id)
     admin=users.admin
@@ -149,12 +152,25 @@ def delete_profile_pic(request):
         return redirect ('edit_profile')
     
     return render(request,'Company/profile/edit_profile.html',context)
+# end profile
+
+# //////////////
+
+# Manage Staff 
+def view_staff(request):
+    return render(request,'Company/staffs/view_staff.html',{})
 
 def add_staff(request):
-    return HttpResponse('staff removed')
+    return render(request,'Company/staffs/add_staff.html',{})
+
+def update_contrat_staff(request):
+    return render(request,'Company/staffs/update_contrat.html',{})
 
 def remove_staff(request):
-    return HttpResponse('staff removed')
+    return render(request,'Company/staffs/remove_staff.html',{})
+
+# end Staff
+
 
 
 def view_agent_orders(request):
@@ -187,7 +203,7 @@ def agent_view(request):
     context = {
         'all_agent':all_agent,
     }
-    return render(request,'Company/agent-view.html',context)
+    return render(request,'Company/agents/agent-view.html',context)
 
 def agent_detail(request,pk):
     agent = Agent.objects.get(pk=pk)
@@ -195,18 +211,18 @@ def agent_detail(request,pk):
     context = {
         'agent':agent,      
     }
-    return render(request,'Company/agent-detail.html',context)
+    return render(request,'Company/agents/agent-detail.html',context)
 
 def agent_update_contrat(request,pk):
     agent = Agent.objects.get(pk=pk)
     context = {
         'agent':agent,      
     }
-    return render(request,'Company/update_agent.html',context)
+    return render(request,'Company/agents/update_agent.html',context)
 
 def remove_agent(request,pk):
     agent = Agent.objects.get(pk=pk)
     context = {
         'agent':agent,      
     }
-    return render(request,'Company/remove_agent.html',context)
+    return render(request,'Company/agents/remove_agent.html',context)
