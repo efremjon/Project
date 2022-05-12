@@ -21,13 +21,14 @@ class Admin(models.Model):
         return str(self.user)
     
 class Region(models.Model):
-	Region_Name=models.CharField(max_length=100,blank=True, null=True)
-	def __str__(self) -> str:
-		return self.Region_Name
-
+    Region_Name=models.CharField(max_length=100,blank=True, null=True)
+    Location = models.CharField(max_length=200, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+	
 class Company_Store(models.Model):
     Store_Name = models.CharField(max_length=200, null=True)
     Location = models.CharField(max_length=200, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 class Company_Store_Manager(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)

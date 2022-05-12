@@ -30,31 +30,23 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Store Name</th>
-                      <th scope="col">Store Manager</th>
-                      <th scope="col">Date</th>
+                      <th scope="col">Region Name</th>
+                      <!-- <th scope="col">Store Manager</th> -->
+                      <th scope="col">Date_Create</th>
                       <th scope="col">Location</th>
                     </tr>
                   </thead>
                   <tbody>
-                 {% for staff in staff_finance_manager %}
+                 {% for region in all_region %}
                     <tr>
-                      <th scope="row">1</th>
-                      <td><a href="{% url 'staff-detail' staff.id  staff.staff %}" class="btn">{{staff.user.username}}</a></td>
-                      <td>{{staff.staff}}</td>
-                      <td>{{staff.date_created }}</td>
-                      <td>{{staff.phone}}</td>
+                      <th scope="row">{{region.id}}</th>
+                     
+                      <td>{{region.Region_Name}}</td>
+                      <td>{{region.Location}}</td>
+                      <td>{{region.date_created}}</td>
                     </tr>
                 {% endfor %}     
-                {% for staff in staff_company_store_manager %}
-                    <tr>
-                      <th scope="row">1</th>
-                      <td><a href="{% url 'staff-detail' staff.id staff.staff %}" class="btn">{{staff.user.username}}</a></td>
-                      <td>{{staff.staff}}</td>
-                      <td>{{staff.date_created }}</td>
-                      <td>{{staff.phone}}</td>
-                    </tr>
-                {% endfor %}             
+                          
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->

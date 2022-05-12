@@ -16,8 +16,23 @@ from django.core.mail import send_mail
 # Create your views here.
 
 def Admin_dashboard(request):
-
-    return render(request,'Company/admin.html',{})
+    all_agent = Agent.objects.all()
+    S_staff = Company_Store_Manager.objects.all()
+    F_staff = Finance_Manager.objects.all()
+    total_agent = all_agent.count()
+    tottal_staff = S_staff.count() + F_staff.count()
+    all_store = Company_Store.objects.all()
+    tottal_store = all_store.count()
+    all_region = Region.objects.all()
+    tottal_region = all_region.count()
+    context = {
+        'all_agent' : all_agent,
+        'total_agent' :total_agent,
+        'tottal_staff' : tottal_staff,
+        'tottal_store' : tottal_store,
+        'tottal_region': tottal_region,
+    }
+    return render(request,'Company/admin.html',context)
 
 def add_agent(request):
     form =NameForm()
@@ -47,10 +62,10 @@ def add_agent(request):
         if password1==password2:
             if User.objects.filter(username=user_name).exists():
                 messages.info(request, 'username taken')
-                return render(request,'Company/add-agent.html',{})
+                return render(request,'Company/agents/add-agent.html',{})
             elif User.objects.filter(email=email).exists():
                 messages.info(request, 'email taken ')
-                return render(request,'Company/add-agent.html',{})
+                return render(request,'Company/agents/add-agent.html',{})
             else:
                 user=User.objects.create_user(first_name=first_name,last_name=last_name,username=user_name,email=email,password=password1)
                 user.save()
@@ -61,8 +76,8 @@ def add_agent(request):
                 return redirect ('/')
         else:
             messages.info(request, 'PASSWORD NOT MUCH')
-            return render(request,'Company/add-agent.html',{})
-    return render(request,'Company/add-agent.html',{'form':form})
+            return render(request,'Company/agents/add-agent.html',{})
+    return render(request,'Company/agents/add-agent.html',{'form':form})
 
 # ////////////////
 
@@ -71,8 +86,7 @@ def show_profile(request):
     users=User.objects.get(id=request.user.id)
     admin=users.admin
     context = {
-        'admin':admin ,
-        
+        'admin':admin , 
     }
     return render(request,'Company/profile/show_profile.html',context)
 
@@ -274,7 +288,11 @@ def remove_agent(request,pk):
 # Manage Store 
 
 def view_store(request):
-    return render(request,'Company/store/store-view.html')
+    all_store = Company_Store.objects.all()
+    context = {
+        'all_store' : all_store,
+    }
+    return render(request,'Company/store/store-view.html',context)
 
 def add_store_company(request):
     return render(request,'Company/store/add-store.html')
@@ -284,7 +302,11 @@ def add_store_company(request):
 # Manage Region
 
 def view_region(request):
-    return render(request,'Company/region/region-view.html')
+    all_region = Region.objects.all()
+    context = {
+        'all_region' : all_region,
+    }
+    return render(request,'Company/region/region-view.html',context)
 
 def add_region(request):
     return render(request,'Company/region/add-region.html')

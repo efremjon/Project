@@ -10,7 +10,7 @@
           <li class="breadcrumb-item active">View Staff</li>
         </ol>
         <div class="text-end">
-            <a href="{% url 'add_store_company' %}" class="item-end">
+            <a href="{% url 'add-store-company' %}" class="item-end">
                 <button type="button" class="btn btn-sm rounded-pill btn-secondary"><i class="bi bi-plus me-1"></i>Add staff</button>
               </a>
         </div>
@@ -28,6 +28,7 @@
                 
                 <table class="table datatable">
                   <thead>
+                   
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Store Name</th>
@@ -37,24 +38,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                 {% for staff in staff_finance_manager %}
+                 {% for store in all_store %}
                     <tr>
-                      <th scope="row">1</th>
-                      <td><a href="{% url 'staff-detail' staff.id  staff.staff %}" class="btn">{{staff.user.username}}</a></td>
-                      <td>{{staff.staff}}</td>
-                      <td>{{staff.date_created }}</td>
-                      <td>{{staff.phone}}</td>
+                      <th scope="row">{{store.id}}</th>
+                      <td>{{store.Store_Name}}</td>
+                      <td>{{store.Company_Store_Manager.user}}</td>
+                      <td>{{store.id}}</td>
+                      <td>{{store.Location}}</td>
                     </tr>
                 {% endfor %}     
-                {% for staff in staff_company_store_manager %}
-                    <tr>
-                      <th scope="row">1</th>
-                      <td><a href="{% url 'staff-detail' staff.id staff.staff %}" class="btn">{{staff.user.username}}</a></td>
-                      <td>{{staff.staff}}</td>
-                      <td>{{staff.date_created }}</td>
-                      <td>{{staff.phone}}</td>
-                    </tr>
-                {% endfor %}             
+                     
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
