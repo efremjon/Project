@@ -29,7 +29,7 @@ class Region(models.Model):
 	
 class Company_Store(models.Model):
     Store_Name = models.CharField(max_length=200, null=True)
-    Location = models.CharField(max_length=200, null=True)
+    Address = models.CharField(max_length=200, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self) -> str:
         return self.Store_Name
@@ -58,12 +58,10 @@ class Product(models.Model):
         return self.Product_Name
 
 class Product_Amount_in_Store(models.Model):
-    Store=models.OneToOneField(Company_Store,null=True, on_delete=models.CASCADE)
-    Product_Name=models.OneToOneField(Product,null=True, on_delete=models.CASCADE)
+    produc_store=models.ManyToManyField(Company_Store)
+    Name = models.ManyToManyField(Product,primary_key=False)
     product_Quintitiy=models.CharField(max_length=200, null=True)
-    def __str__(self) -> str:
-        return str(self.Product_Name) +  "|" + str(self.Store)
-
+   
 class Agent(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     Full_Name=models.CharField(max_length=300, null=True)

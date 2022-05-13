@@ -56,4 +56,6 @@ urlpatterns = [
 
 path('add_advertisments/',views.advertisments_view,name='add-advertisments'),
 
+# END Addivertisment
+
 ]

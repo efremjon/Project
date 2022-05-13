@@ -321,3 +321,12 @@ def advertisments_view(request):
 
 
 
+def product_in_store(request):
+    all_Product_Amount_in_Store = Product_Amount_in_Store.objects.all()
+    # p_a=Product_Amount_in_Store.objects.get(Store=1,Product_Name=2)
+    all_Product = Product.objects.all()
+    all_Company_Store = Company_Store.objects.all()
+    
+
+    #  Name, id, produc_store, product_Quintitiy
+ 
