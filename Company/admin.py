@@ -10,6 +10,7 @@ admin.site.register(Agent)
 admin.site.register(Advertisment)
 admin.site.register(Finance_Manager)
 admin.site.register(Company_Store_Manager)
+admin.site.register(Product_Amount_in_Store)
 
 
 

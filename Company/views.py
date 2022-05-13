@@ -25,12 +25,15 @@ def Admin_dashboard(request):
     tottal_store = all_store.count()
     all_region = Region.objects.all()
     tottal_region = all_region.count()
+    all_product = Product.objects.all()
+    tottal_product = all_product.count()
     context = {
         'all_agent' : all_agent,
         'total_agent' :total_agent,
         'tottal_staff' : tottal_staff,
         'tottal_store' : tottal_store,
         'tottal_region': tottal_region,
+        'tottal_product' : tottal_product,
     }
     return render(request,'Company/admin.html',context)
 
