@@ -1,0 +1,82 @@
+{% extends 'Company/store_manager/store_base.html' %}
+{% load static %}
+{% block content %}
+  <!-- ====== Main -->
+  <main  class="mt-5 pt-4">
+      <div class="container">
+        <section class="section dashboard">
+            <div class="row">
+             
+                <div class="col-lg-6">
+                    <div class="card info-card sales-card">
+                      <div class="card-body">
+                        <h5 class="card-title">Castle beer</h5>
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <img width="80" src="{% static 'assets/img/castle-beer.jpg' %}" alt="">
+                          </div>
+                          <div class="ps-3">
+                              <h2>available</h2>
+                            <strong>600,000</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card info-card sales-card">
+                      <div class="card-body">
+                        <h5 class="card-title">Doppel</h5>
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <img width="80" src="{% static 'assets/img/Doppel-Brown-Beer.jpeg' %}" alt="">
+                          </div>
+                          <div class="ps-3">
+                              <h2>availabe</h2>
+                            <strong>400,000</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card info-card sales-card">
+                      <div class="card-body">
+                        <h5 class="card-title">Sen'q malt</h5>
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <img width="80" src="{% static 'assets/img/Senq-malt.jpeg' %}" alt="">
+                          </div>
+                          <div class="ps-3">
+                              <h2>availabe </h2>
+                            <strong>500,000</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card info-card sales-card">
+                      <div class="card-body">
+                        <h5 class="card-title">St. George beer</h5>
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <img width="80" src="{% static 'assets/img/st-george.jpg' %}" alt="">
+                          </div>
+                          <div class="ps-3">
+                              <h2>available</h2>
+                            <strong>1,000,000</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      
+            </div>
+          </section>
+      </div>
+  </main><!-- End #main -->
+
+  {{user}}
+  {{a}}
+{% endblock %}

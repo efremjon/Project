@@ -58,4 +58,19 @@ path('add_advertisments/',views.advertisments_view,name='add-advertisments'),
 
 # END Addivertisment
 
+
+
+# store manager 
+
+path('Store_Manager/',views.store_manager_view,name='store-manager-home'),
+path('Store_Manager/add_produc_to_store',views.add_produc_to_store_view,name='add-to-store'),
+path('Store_Manager/aprove_order',views.aprove_order_view,name='aprove-order'),
+# endstore manager
+
+# finance admin
+path('Finance_Admin/',views.finance_admin_view,name='finance_admin_home'),
+path('Finance_Admin/check_store',views.check_store_view,name='finance-check-store'),
+path('Finance_Admin/aprove_order_history',views.aprove_order_history_view,name='aprove-order-history'),
+
+# end finace admin
 ]

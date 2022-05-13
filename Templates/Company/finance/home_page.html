@@ -1,0 +1,93 @@
+{% extends 'Company/finance/finance_base.html' %}
+{% load static %}
+{% block content %}
+  <!-- ====== Main -->
+  <main  class="mt-5 pt-4">
+      <div class="container">
+        <section class="section dashboard">
+            <div class="row">
+              <!-- Left side columns -->
+              <div class="col-lg-12">
+                <div class="row">
+               
+                  <div class="card info-card customers-card">
+                    <h5 class="card-title">Available in store</h5>
+                    <table class="table table-border " id="approve_orders">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Agent</th>
+                          <th scope="col">Product</th>                    
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Due date</th>
+                          <th scope="col">Payment slip</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>1</th> 
+                          <td>Gebrekidam</td>
+                          <td>Castle</td>
+                          <td>6000</td>
+                          <td>1,278,175</td>
+                          <td>12-6-2022</td>
+                          <td>
+                            <button id="viewslip" type="button" class="btn btn-warning">View slip</button>
+                          </td>
+                          <td>
+                            <button id="approve" onclick="approved()" type="button" class="btn btn-success">Approve</button>
+                            </td>
+                            <td>
+                                <button id="reject" onclick="rejected()" type="button" class="btn btn-danger">Reject</button>
+                                </td>
+                        </tr>
+                        <tr>
+                            <th>1</th> 
+                            <td>Gebrekidam</td>
+                            <td>Castle</td>
+                            <td>6000</td>
+                            <td>1,278,175</td>
+                            <td>12-6-2022</td>
+                            <td>
+                                <button id="viewslip" type="button"  class="btn btn-warning">View slip</button>
+                              </td>
+                            <td>
+                              <button id="approve" onclick="approved()" type="button" class="btn btn-success">Approve</button>
+                              </td>
+                              <td>
+                                  <button id="reject" onclick="rejected()" type="button" class="btn btn-danger">Reject</button>
+                                  </td>
+                          </tr>
+                          <tr>
+                            <th>1</th> 
+                            <td>Gebrekidam</td>
+                            <td>Castle</td>
+                            <td>6000</td>
+                            <td>1,278,175</td>
+                            <td>12-6-2022</td>
+                            <td>
+                                <button id="view_slip" type="button" class="btn btn-warning">View slip</button>
+                              </td>
+                            <td>
+                              <button id="approve"  onclick="approved()"type="button" class="btn btn-success">Approve</button>
+                              </td>
+                              <td>
+                                  <button id="reject" onclick="rejected()" type="button" class="btn btn-danger">Reject</button>
+                                  </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+      
+            </div><!-- End Recent Activity -->   
+              </div><!-- End Right side columns -->
+      
+            </div>
+          </section>
+      </div>
+  </main><!-- End #main -->
+
+ {% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'Company/finance/finance_base.html' %}
+{% load static %}
+{% block content %}
+  <!-- ====== Main -->
+  <main  class="mt-5 pt-4">
+    <div class="container">
+      <section class="section dashboard">
+          <div class="row">
+            <!-- Left side columns -->
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="text-end">
+                    <button id="download_excel" type="button" class="btn btn-secondary btn-sm">Excel</button>
+                </div>
+                  <div class="card info-card customers-card">
+                  <h5 class="card-title">Approved orders History</h5>
+                  <table class="table table-border" id="approval_history_tbl">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Agent</th>
+                        <th scope="col">Driver</th>
+                        <th scope="col">Product</th>                    
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Paid</th>
+                        <th scope="col">Approval date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>1</th> 
+                        <td >Zemen</td>
+                        <td>Gebrekidam</td>
+                        <td>Castle</td>
+                        <td>6000</td>
+                        <td>1,278,175</td>
+                        <td>12-6-2022</td>
+                      </tr>
+                      <tr>
+                          <th>1</th> 
+                          <td >Zemen</td>
+                          <td>Gebrekidam</td>
+                          <td>Castle</td>
+                          <td>6000</td>
+                          <td>1,278,175</td>
+                          <td>12-6-2022</td>
+                        </tr>
+                        <tr>
+                          <th>1</th> 
+                          <td >Zemen</td>
+                          <td>Gebrekidam</td>
+                          <td>Castle</td>
+                          <td>6000</td>
+                          <td>1,278,175</td>
+                          <td>12-6-2022</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+    
+          </div><!-- End Recent Activity -->   
+            </div><!-- End Right side columns -->
+    
+          </div>
+        </section>
+    </div>
+</main><!-- End #main -->
+{% endblock %}

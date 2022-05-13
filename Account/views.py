@@ -24,6 +24,12 @@ def login_view(request):
             elif a == 'Customer':
                 login(request,user)
                 return redirect('Customer_dashbord')
+            elif a == 'Financ_admin':
+                login(request,user)
+                return redirect('finance_admin_home')
+            elif a == 'Store_Manager':
+                login(request,user)
+                return redirect('store-manager-home')
         else:
             return render(request,'Account/login.html')
     return render(request,'Account/login.html')

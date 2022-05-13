@@ -35,7 +35,7 @@ class Company_Store(models.Model):
         return self.Store_Name
 
 class Company_Store_Manager(models.Model):
-    user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
+    user=models.ForeignKey(User,null=True, on_delete=models.CASCADE)
     Store=models.OneToOneField(Company_Store,null=True, on_delete=models.CASCADE)
     staff=models.CharField(default='Store_Manager',max_length=50)
     profile_pic=models.ImageField(null=True,blank=True, upload_to='Profile/')
@@ -61,7 +61,8 @@ class Product_Amount_in_Store(models.Model):
     produc_store=models.ManyToManyField(Company_Store)
     Name = models.ManyToManyField(Product,primary_key=False)
     product_Quintitiy=models.CharField(max_length=200, null=True)
-   
+    def __str__(self) -> str:
+        return self.product_Quintitiy
 class Agent(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     Full_Name=models.CharField(max_length=300, null=True)

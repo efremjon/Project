@@ -1,0 +1,84 @@
+{% extends 'Company/store_manager/store_base.html' %}
+{% load static %}
+{% block content %}
+  <main  class="mt-5 pt-4">
+      <div class="container">
+        <section class="section dashboard">
+            <div class="row">
+              <!-- Left side columns -->
+              <div class="col-lg-12">
+                <div class="row">
+               
+                  <div class="card info-card customers-card">
+                    <h5 class="card-title">Approved orders for loading</h5>
+                    <table class="table table-border datatable" id="available">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Driver</th>
+                          <th scope="col">Agent</th>
+                          <th scope="col">Product</th>                    
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Paid</th>
+                          <th scope="col">Due date</th>
+                          <th scope="col">Load</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>1</th> 
+                          <td >Zemen</td>
+                          <td>Gebrekidam</td>
+                          <td>Castle</td>
+                          <td>6000</td>
+                          <td>1,278,175</td>
+                          <td>12-6-2022</td>
+                          <td>
+                            <button id="load" onclick="withdraw()" type="button" class="btn btn-success">
+                                <i class="bi bi-check-circle">Load</i>
+                            </button>
+                        </td>
+                        </tr>
+                        <tr>
+                            <th>1</th> 
+                            <td >Zemen</td>
+                            <td>Gebrekidam</td>
+                            <td>Castle</td>
+                            <td>6000</td>
+                            <td>1,278,175</td>
+                            <td>12-6-2022</td>
+                            <td>
+                              <button id="load" onclick="withdraw()" type="button" class="btn btn-success">
+                                  <i class="bi bi-check-circle">Load</i>
+                              </button>
+                          </td>
+                          </tr>
+                          <tr>
+                            <th>1</th> 
+                            <td >Zemen</td>
+                            <td>Gebrekidam</td>
+                            <td>Castle</td>
+                            <td>6000</td>
+                            <td>1,278,175</td>
+                            <td>12-6-2022</td>
+                            <td>
+                              <button id="load" onclick="withdraw()" type="button" class="btn btn-success">
+                                  <i class="bi bi-check-circle">Load</i>
+                              </button>
+                          </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+      
+            </div><!-- End Recent Activity -->   
+              </div><!-- End Right side columns -->
+      
+            </div>
+          </section>
+      </div>
+  </main><!-- End #main -->
+{% endblock %}
+  

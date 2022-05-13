@@ -330,3 +330,37 @@ def product_in_store(request):
 
     #  Name, id, produc_store, product_Quintitiy
  
+#  store manager
+
+def store_manager_view(request):
+    user = User.objects.get(id=request.user.id)
+    a=Company_Store_Manager.objects.get(user=user)
+   
+    context = {
+       'user' : user,
+       'a' :a,
+      
+        
+    }
+    return render(request,'Company/store_manager/home_page.html',context)
+def add_produc_to_store_view(request):
+    return render(request,'Company/store_manager/add_to_store.html',{})
+
+def aprove_order_view(request):
+    return render(request,'Company/store_manager/approved_orders.html',{})
+
+# END store manager
+
+
+
+#  Finance admin
+
+def finance_admin_view(request):
+    return render(request,'Company/finance/home_page.html',)
+def check_store_view(request):
+    return render(request,'Company/finance/check-store.html',{})
+
+def aprove_order_history_view(request):
+    return render(request,'Company/finance/approved-orders-history.html',{})
+
+# END store manager
