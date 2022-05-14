@@ -30,21 +30,21 @@
                   <thead>
                    
                     <tr>
-                      <th scope="col">#</th>
+                     
                       <th scope="col">Store Name</th>
-                      <th scope="col">Store Manager</th>
                       <th scope="col">Date</th>
                       <th scope="col">Location</th>
+                      <th scope="col">View</th>
                     </tr>
                   </thead>
                   <tbody>
                  {% for store in all_store %}
                     <tr>
-                      <th scope="row">{{store.id}}</th>
-                      <td><a href="{% url 'store_detile' %}">{{store.Store_Name}}</a></td>
-                      <td>{{store.Company_Store_Manager.user}}</td>
-                      <td>{{store.id}}</td>
-                      <td>{{store.Location}}</td>
+                    
+                      <td>{{store.Store_Name}}</td>
+                      <td>{{store.date_created}}</td>
+                      <td>{{store.Address}}</td>
+                      <td>  <a href="{% url 'store_detile' store.id %}" class="btn btn-info">View</a></td>
                     </tr>
                 {% endfor %}     
                      

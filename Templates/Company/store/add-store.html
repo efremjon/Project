@@ -21,32 +21,21 @@
             <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
               <div class="card mb-5">
                 <div class="card-body">         
-                    <h5 class="card-title text-center pb-0 fs-4 text-warning">Staff Registration form</h5>
-                  <form class="row g-3 needs-validation" novalidate>
-                    
+                    <h5 class="card-title text-center pb-0 fs-4 text-warning">Add Store</h5>
+                  <form class="row g-3 needs-validation" method="POST">
+                    {% csrf_token %}
                       <div class="col-lg-12 col-md-12 col-sm-12">
-                        <label for="stfullname" class="form-label">Full Name</label>
-                        <input type="text" name="stFullname" class="form-control" id="stFullname" required>
-                        <div class="invalid-feedback">Please, enter full name!</div>
-                      </div>
-
-                      <div class="col-lg-12 col-md-12 col-sm-12">
-                        <label for="stfullname" class="form-label">Store Manager</label>
-                        <input type="text" name="stFullname" class="form-control" id="stFullname" required>
-                        <div class="invalid-feedback">Please, enter full name!</div>
-                      </div>
-
+                        <label for="stfullname" class="form-label">Store Name</label>
+                        <input type="text" name="store_name" class="form-control" id="stFullname" required>
+                        <div class="invalid-feedback">Please, enter Store name!</div>
+                      </di
                      <div class="col-lg-12 col-md-12 col-sm-12">
-                        <label for="starea" class="form-label">Area</label>
-                        <input type="text" name="stArea" class="form-control" id="stArea" required>
-                        <div class="invalid-feedback">Please enter area!</div>
+                        <label for="starea" class="form-label">Adderes</label>
+                        <input type="text" name="address" class="form-control" id="stArea" required>
+                        <div class="invalid-feedback">Please enter Adderes!</div>
                       </div>
 
-                      <div class="col-lg-12 col-md-12 col-sm-12">
-                        <label for="starea" class="form-label">Area</label>
-                        <input type="text" name="stArea" class="form-control" id="stArea" required>
-                        <div class="invalid-feedback">Please enter area!</div>
-                      </div>
+                     
                       
                       <div class="col-12">
                         <button class="btn btn-warning w-100" type="submit">Add</button>

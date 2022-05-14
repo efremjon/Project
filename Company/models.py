@@ -29,7 +29,7 @@ class Region(models.Model):
 class Company_Store(models.Model):
     Store_Name = models.CharField(max_length=200, null=True)
     Address = models.CharField(max_length=200, null=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    date_created = models.DateField(auto_now_add=True, null=True)
     def __str__(self) -> str:
         return self.Store_Name
 

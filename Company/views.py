@@ -299,26 +299,36 @@ def remove_agent(request,pk):
 
 def view_store(request):
     all_store = Company_Store.objects.all()
+    manager=Company_Store_Manager.objects.all()
     context = {
         'all_store' : all_store,
+        'manager' :manager
     }
     return render(request,'Company/store/store-view.html',context)
 
 def add_store_company(request):
+    if request.method == 'POST':
+        Store_Name=request.POST['store_name']
+        Address=request.POST['address']
+        Company_Store.objects.create(Store_Name=Store_Name,Address=Address)
     return render(request,'Company/store/add-store.html')
 
-def sore_ditel_view(request):
+def sore_ditel_view(request,pk):
     all_product = Product.objects.all()
-    store = Company_Store.objects.get(id=5)
+    store = Company_Store.objects.get(pk=pk)
     amount_store = Product_Amount_in_Store.objects.get(store=store)
+    manager=Company_Store_Manager.objects.get(Store=store)
+    
+    Total=amount_store.Doppel+amount_store.St_George+amount_store.Castle+amount_store.Sinq_Malt
     Dopple = 'Dopple'
     context = {
         'all_product' : all_product,
         'store': store,
         'amount': amount_store,
-        'a' : Dopple,
+        'Total' : Total,
+        'manager' :manager,
     }
-    return render(request,'Company/storeditel.html',context)
+    return render(request,'Company/store/store-detail.html',context)
 
 # end Manage store
 
