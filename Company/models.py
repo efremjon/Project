@@ -1,4 +1,3 @@
-from operator import mod
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -58,11 +57,14 @@ class Product(models.Model):
         return self.Product_Name
 
 class Product_Amount_in_Store(models.Model):
-    produc_store=models.ManyToManyField(Company_Store)
-    Name = models.ManyToManyField(Product,primary_key=False)
-    product_Quintitiy=models.CharField(max_length=200, null=True)
+    store=models.OneToOneField(Company_Store, null=True, on_delete=models.CASCADE)
     def __str__(self) -> str:
-        return self.product_Quintitiy
+        return str(self.store)
+products=Product.objects.all()
+for product in products:
+    Product_Amount_in_Store.add_to_class(product.Product_Name,models.IntegerField(default=0))  
+
+
 class Agent(models.Model):
     user=models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     Full_Name=models.CharField(max_length=300, null=True)

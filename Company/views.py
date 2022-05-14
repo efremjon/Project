@@ -27,6 +27,11 @@ def Admin_dashboard(request):
     tottal_region = all_region.count()
     all_product = Product.objects.all()
     tottal_product = all_product.count()
+    all_product_in_store=Product_Amount_in_Store.objects.all()
+    names = []
+    for name in all_product:
+        names.append(name.Product_Name)
+    
     context = {
         'all_agent' : all_agent,
         'total_agent' :total_agent,
@@ -34,6 +39,8 @@ def Admin_dashboard(request):
         'tottal_store' : tottal_store,
         'tottal_region': tottal_region,
         'tottal_product' : tottal_product,
+        'all_product_in_store' :all_product_in_store,
+        'names' :names,
     }
     return render(request,'Company/admin.html',context)
 
@@ -300,6 +307,19 @@ def view_store(request):
 def add_store_company(request):
     return render(request,'Company/store/add-store.html')
 
+def sore_ditel_view(request):
+    all_product = Product.objects.all()
+    store = Company_Store.objects.get(id=5)
+    amount_store = Product_Amount_in_Store.objects.get(store=store)
+    Dopple = 'Dopple'
+    context = {
+        'all_product' : all_product,
+        'store': store,
+        'amount': amount_store,
+        'a' : Dopple,
+    }
+    return render(request,'Company/storeditel.html',context)
+
 # end Manage store
 
 # Manage Region
@@ -334,11 +354,11 @@ def product_in_store(request):
 
 def store_manager_view(request):
     user = User.objects.get(id=request.user.id)
-    a=Company_Store_Manager.objects.get(user=user)
+    # a=Company_Store_Manager.objects.get(user=user)
    
     context = {
        'user' : user,
-       'a' :a,
+    #    'a' :a,
       
         
     }

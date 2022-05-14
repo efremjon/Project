@@ -41,7 +41,7 @@
                  {% for store in all_store %}
                     <tr>
                       <th scope="row">{{store.id}}</th>
-                      <td>{{store.Store_Name}}</td>
+                      <td><a href="{% url 'store_detile' %}">{{store.Store_Name}}</a></td>
                       <td>{{store.Company_Store_Manager.user}}</td>
                       <td>{{store.id}}</td>
                       <td>{{store.Location}}</td>

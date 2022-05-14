@@ -44,7 +44,7 @@ urlpatterns = [
 
     path('view_store/',views.view_store,name='view-store'),
     path('add_store_company/',views.add_store_company,name='add-store-company'),
-
+    path('store_detile/',views.sore_ditel_view,name="store_detile"),
 # end Manage store part
 
 # Manage region part

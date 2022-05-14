@@ -1,0 +1,28 @@
+ <!-- Dark Table -->
+    <table class="table table-dark">
+      <thead>
+        <tr>
+         
+         {% for i in all_product %}
+          <th scope="col">{{i}}</th>
+         {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+      
+        <tr>
+          {% for i in all_product %}
+               {{i}}
+          <td>{{amount}}</td>
+          <br>
+
+       {% endfor %}
+      
+        </tr>
+        
+      </tbody>
+    </table>
+    <!-- End Dark Table -->
+    
+  </div>
+</div>
