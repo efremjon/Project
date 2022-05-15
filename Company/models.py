@@ -51,6 +51,7 @@ class Company_Store_Manager(models.Model):
     
 class Product(models.Model):
     Product_Name=models.CharField(max_length=200, null=True)
+    img = models.ImageField(null=True,blank=True, upload_to='Product_img/',default='Product_img/castle-beer.jpg')
     Price_in_botle=models.FloatField(null=True,blank=True)
     Price_in_creates=models.FloatField(null=True,blank=True)
     def __str__(self) -> str:

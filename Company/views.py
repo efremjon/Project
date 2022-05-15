@@ -39,9 +39,7 @@ def Admin_dashboard(request):
         'all_product':all_product,
      
     }
-    return render(request,'Company/admin.html',context)
-
-
+    return render(request,'Company/dashboard/admin.html',context)
 
 def staff_dashboard(request):
     all_agent = Agent.objects.all()
@@ -70,7 +68,7 @@ def staff_dashboard(request):
         'staff_company_store_manager':staff_company_store_manager,
      
     }
-    return render(request,'Company/dashboardagent.html',context)
+    return render(request,'Company/dashboard/staff.html',context)
 
 def store_dashboard(request):
     all_agent = Agent.objects.all()
@@ -100,7 +98,7 @@ def store_dashboard(request):
         'staff_company_store_manager':staff_company_store_manager,
      
     }
-    return render(request,'Company/2.html',context)
+    return render(request,'Company/dashboard/store.html',context)
 
 
 
@@ -134,7 +132,7 @@ def region_dashboard(request):
         'staff_company_store_manager':staff_company_store_manager,
      
     }
-    return render(request,'Company/1.html',context)
+    return render(request,'Company/dashboard/region.html',context)
 
 def product_dashboard(request):
     all_agent = Agent.objects.all()
@@ -165,7 +163,7 @@ def product_dashboard(request):
         'staff_company_store_manager':staff_company_store_manager,
      
     }
-    return render(request,'Company/3.html',context)
+    return render(request,'Company/dashboard/product.html',context)
 
   
 def add_agent(request):

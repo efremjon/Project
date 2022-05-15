@@ -1,0 +1,38 @@
+  <!-- ====== Main -->
+  {% extends 'Company/admin.html'%}
+  {% block admin%}
+    
+  
+        
+                <div class="card-body">
+                    <h5 class="card-title">Product</h5>
+                  <!-- Table with stripped rows -->
+                  
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Preview</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price in Bottel</th>
+                        <th scope="col">Price in Creat</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in all_product %}
+                      <tr>
+                        <th scope="row"><a href="#"><img src="{{product.img.url}}" alt="" width="60"></a></th>
+                        <td>{{product.Product_Name}}</td>
+                        <td>{{product.Price_in_botle}}</td>
+                        <td>{{product.Price_in_creates}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+           
+  
+  {% endblock %}
+    

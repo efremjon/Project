@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
 from Agent.models import Customer
+from .models import Customer_order
 from .form import passwordform
 from django.core.mail import send_mail
 
@@ -18,14 +19,55 @@ from django.shortcuts import render
 
 
 def Customer_dashboard(request):
-    return render(request,'Customer/Customer_home_page.html')
+    customer_orders=Customer_order.objects.filter(id=request.user.customer.id)
+    orders=customer_orders
+    total_pending=0
+    total_received=0
+    total_paid=0
+    total_rejected=0
+  
+    for order in orders:
+        total_paid+=order.total_payment
+        if order.status == 'Pending':
+            total_pending+=1
+        elif order.status == 'Out for Delivery':
+            total_rejected+=1
+        elif order.status == 'Delivered':
+            total_received+=1
+
+    context={'customer_orders':customer_orders,'total_pending':total_pending,'total_rejected':total_rejected,'total_rejected':total_rejected,'total_received':total_received}
+    return render(request,'Customer/home.html',context)
     
 # User Profile
 def show_profile(request):
-    return render(request,'Customer/profile/show_profile.html',)
+    customer=Customer.objects.get(id=request.user.customer.id)
+    context={'customer':customer}
+    return render(request,'Customer/profile/show_profile.html',context)
 
 def edit_profile(request):
-    return render(request,'Customer/profile/edit_profile.html',)
+    users=User.objects.get(id=request.user.id)
+    context = {
+        'users':users ,
+        
+    }
+    if request.method == 'POST':
+        users.customer.about=request.POST['about']
+        users.customer.phone1=request.POST['phone1']
+        users.customer.phone2=request.POST['phone2']
+      #  admin.Company=request.POST['company']
+        users.customer.address=request.POST['address']
+        
+
+        users.customer.facebook=request.POST['facebook']
+        users.customer.telegram=request.POST['telegram']
+        users.customer.instagrm=request.POST['instagram']
+        users.first_name=request.POST['first_name']
+        users.last_name=request.POST['last_name']
+        users.email=request.POST['email']
+        users.customer.save()
+        users.save()
+        return redirect ('show_profile_customer')
+    return render(request,'Customer/profile/edit_profile.html',context)
 
 
 def change_password(request):
@@ -62,10 +104,20 @@ def delete_profile_pic(request):
 
 
 def make_order(request):
-    return render(request,'Customer/customer_order.html')
+    return render(request,'Customer/cust_order.html')
 
 def send_delivery(request):
-    return render(request,'Customer/send-delivery-status.html')
+    delivereds=Customer_order.objects.filter(status='Pending')
+    tests=delivereds
+    quantity=[]
+    for test in tests:
+        quantity.append(test.castel+test.castel+test.doppel+test.senq+test.george)
+
+    context={'deliverds':delivereds,'quantity':quantity}
+    return render(request,'Customer/send-delivery-status.html',context)
 
 def transaction_history(request):
-    return render(request,'Customer/transaction_history.html')
+    
+    customer_orders=Customer_order.objects.all()
+    context={'customer_orders':customer_orders}
+    return render(request,'Customer/transaction_history.html',context)
