@@ -47,7 +47,7 @@ class Company_Store_Manager(models.Model):
     facebook = models.CharField(max_length=200, null=True)
     instagrm = models.CharField(max_length=200, null=True)
     def __str__(self):
-        return self.user.first_name
+        return str(self.Store)
     
 class Product(models.Model):
     Product_Name=models.CharField(max_length=200, null=True)

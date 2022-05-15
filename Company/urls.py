@@ -3,6 +3,10 @@ from .import views
 urlpatterns = [
     path('',views.Admin_dashboard,name="admin-dashbord"),
    
+   path('agent_dashboard',views.staff_dashboard,name="dashbord-staff"),
+   path('store_dashboard',views.store_dashboard,name="dashbord-store"),
+   path('region_dashboard',views.region_dashboard,name="dashbord-region"),
+   path('product_dashboard',views.product_dashboard,name="dashbord-product"),
 
     
     path('show_profile/',views.show_profile,name='show_profile'),

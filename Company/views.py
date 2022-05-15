@@ -1,3 +1,4 @@
+from cmath import tan
 from http.client import CONTINUE
 from multiprocessing import context
 from multiprocessing.dummy import JoinableQueue
@@ -27,11 +28,7 @@ def Admin_dashboard(request):
     tottal_region = all_region.count()
     all_product = Product.objects.all()
     tottal_product = all_product.count()
-    all_product_in_store=Product_Amount_in_Store.objects.all()
-    names = []
-    for name in all_product:
-        names.append(name.Product_Name)
-    
+
     context = {
         'all_agent' : all_agent,
         'total_agent' :total_agent,
@@ -39,11 +36,138 @@ def Admin_dashboard(request):
         'tottal_store' : tottal_store,
         'tottal_region': tottal_region,
         'tottal_product' : tottal_product,
-        'all_product_in_store' :all_product_in_store,
-        'names' :names,
+        'all_product':all_product,
+     
     }
     return render(request,'Company/admin.html',context)
 
+
+
+def staff_dashboard(request):
+    all_agent = Agent.objects.all()
+    S_staff = Company_Store_Manager.objects.all()
+    F_staff = Finance_Manager.objects.all()
+    total_agent = all_agent.count()
+    tottal_staff = S_staff.count() + F_staff.count()
+    all_store = Company_Store.objects.all()
+    tottal_store = all_store.count()
+    all_region = Region.objects.all()
+    tottal_region = all_region.count()
+    all_product = Product.objects.all()
+    tottal_product = all_product.count()
+    staff_finance_manager = Finance_Manager.objects.all()
+    staff_company_store_manager = Company_Store_Manager.objects.all()
+   
+    context = {
+        'all_agent' : all_agent,
+        'total_agent' :total_agent,
+        'tottal_staff' : tottal_staff,
+        'tottal_store' : tottal_store,
+        'tottal_region': tottal_region,
+        'tottal_product' : tottal_product,
+        'all_product':all_product,
+        'staff_finance_manager' :staff_finance_manager,
+        'staff_company_store_manager':staff_company_store_manager,
+     
+    }
+    return render(request,'Company/dashboardagent.html',context)
+
+def store_dashboard(request):
+    all_agent = Agent.objects.all()
+    S_staff = Company_Store_Manager.objects.all()
+    F_staff = Finance_Manager.objects.all()
+    total_agent = all_agent.count()
+    tottal_staff = S_staff.count() + F_staff.count()
+    all_store = Company_Store.objects.all()
+    tottal_store = all_store.count()
+    all_region = Region.objects.all()
+    tottal_region = all_region.count()
+    all_product = Product.objects.all()
+    tottal_product = all_product.count()
+    staff_finance_manager = Finance_Manager.objects.all()
+    staff_company_store_manager = Company_Store_Manager.objects.all()
+   
+    context = {
+        'all_agent' : all_agent,
+        'total_agent' :total_agent,
+        'tottal_staff' : tottal_staff,
+        'all_store' :all_store,
+        'tottal_store' : tottal_store,
+        'tottal_region': tottal_region,
+        'tottal_product' : tottal_product,
+        'all_product':all_product,
+        'staff_finance_manager' :staff_finance_manager,
+        'staff_company_store_manager':staff_company_store_manager,
+     
+    }
+    return render(request,'Company/2.html',context)
+
+
+
+
+def region_dashboard(request):
+    all_agent = Agent.objects.all()
+    S_staff = Company_Store_Manager.objects.all()
+    F_staff = Finance_Manager.objects.all()
+    total_agent = all_agent.count()
+    tottal_staff = S_staff.count() + F_staff.count()
+    all_store = Company_Store.objects.all()
+    tottal_store = all_store.count()
+    all_region = Region.objects.all()
+    tottal_region = all_region.count()
+    all_product = Product.objects.all()
+    tottal_product = all_product.count()
+    staff_finance_manager = Finance_Manager.objects.all()
+    staff_company_store_manager = Company_Store_Manager.objects.all()
+   
+    context = {
+        'all_agent' : all_agent,
+        'total_agent' :total_agent,
+        'tottal_staff' : tottal_staff,
+        'all_store' :all_store,
+        'all_region' :all_region,
+        'tottal_store' : tottal_store,
+        'tottal_region': tottal_region,
+        'tottal_product' : tottal_product,
+        'all_product':all_product,
+        'staff_finance_manager' :staff_finance_manager,
+        'staff_company_store_manager':staff_company_store_manager,
+     
+    }
+    return render(request,'Company/1.html',context)
+
+def product_dashboard(request):
+    all_agent = Agent.objects.all()
+    S_staff = Company_Store_Manager.objects.all()
+    F_staff = Finance_Manager.objects.all()
+    total_agent = all_agent.count()
+    tottal_staff = S_staff.count() + F_staff.count()
+    all_store = Company_Store.objects.all()
+    tottal_store = all_store.count()
+    all_region = Region.objects.all()
+    tottal_region = all_region.count()
+    all_product = Product.objects.all()
+    tottal_product = all_product.count()
+    staff_finance_manager = Finance_Manager.objects.all()
+    staff_company_store_manager = Company_Store_Manager.objects.all()
+   
+    context = {
+        'all_agent' : all_agent,
+        'total_agent' :total_agent,
+        'tottal_staff' : tottal_staff,
+        'all_store' :all_store,
+        'all_region' :all_region,
+        'tottal_store' : tottal_store,
+        'tottal_region': tottal_region,
+        'tottal_product' : tottal_product,
+        'all_product':all_product,
+        'staff_finance_manager' :staff_finance_manager,
+        'staff_company_store_manager':staff_company_store_manager,
+     
+    }
+    return render(request,'Company/3.html',context)
+
+  
 def add_agent(request):
     form =NameForm()
     if request.method == 'POST':
@@ -310,8 +434,13 @@ def add_store_company(request):
     if request.method == 'POST':
         Store_Name=request.POST['store_name']
         Address=request.POST['address']
-        Company_Store.objects.create(Store_Name=Store_Name,Address=Address)
-    return render(request,'Company/store/add-store.html')
+        store=Company_Store.objects.create(Store_Name=Store_Name,Address=Address)
+        Product_Amount_in_Store.objects.create(store=store)
+        Company_Store_Manager.objects.create(Store=store)
+        return redirect('view-store')
+    else:
+        return render(request,'Company/store/add-store.html')
+    
 
 def sore_ditel_view(request,pk):
     all_product = Product.objects.all()
@@ -319,13 +448,21 @@ def sore_ditel_view(request,pk):
     amount_store = Product_Amount_in_Store.objects.get(store=store)
     manager=Company_Store_Manager.objects.get(Store=store)
     
-    Total=amount_store.Doppel+amount_store.St_George+amount_store.Castle+amount_store.Sinq_Malt
+    Total = 0
     Dopple = 'Dopple'
+    
+    table_data = {}
+    for product in all_product:
+        table_data[product.Product_Name] = getattr(amount_store, product.Product_Name)
+        Total += getattr(amount_store, product.Product_Name)
+
     context = {
         'all_product' : all_product,
         'store': store,
         'amount': amount_store,
+        'table_data': table_data,
         'Total' : Total,
+        'a': Dopple,
         'manager' :manager,
     }
     return render(request,'Company/store/store-detail.html',context)

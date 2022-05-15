@@ -1,0 +1,41 @@
+  <!-- ====== Main -->
+  {% extends 'Company/admin.html'%}
+  {% block admin%}
+    
+  
+              <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Agent</h5>
+                  <!-- Table with stripped rows -->
+                  
+                   
+                <table class="table datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Region Name</th>
+                        <!-- <th scope="col">Store Manager</th> -->
+                        <th scope="col">Date_Create</th>
+                        <th scope="col">Location</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                   {% for region in all_region %}
+                      <tr>
+                        <th scope="row">{{region.id}}</th>
+                       
+                        <td>{{region.Region_Name}}</td>
+                        <td>{{region.Location}}</td>
+                        <td>{{region.date_created}}</td>
+                      </tr>
+                  {% endfor %}     
+                            
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+              </div>
+  
+  {% endblock %}
+    

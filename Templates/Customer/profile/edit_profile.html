@@ -5,15 +5,16 @@
   <div class="pt-3" >
     <!-- Profile Edit Form -->
     
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row mb-3">
         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
         <div class="col-md-8 col-lg-9">
-          {% if admin.profile_pic %}
-          <img src="{{admin.profile_pic.url}}" alt="Profile" width="150px">
+          {% if user.customer.profile_pic %}
+          <img src="{{user.customer.profile_pic.url}}" alt="Profile" width="150px">
           {% endif %}
           <div class="pt-2">
+            <!-- buttons-icon -->
             <a href="{% url 'change_profile_pic' %}" class="btn btn-primary btn-sm" title="Upload profile image"><i class="bi bi-upload"></i></a>
             <a href="{% url 'delete_profile_pic' %}" class="btn btn-danger btn-sm" title="Remove my profile image" type="file"><i class="bi bi-trash"></i></a>
             <!-- <input type="file" class="btn btn-primary btn-sm" name="img" > -->
@@ -24,13 +25,13 @@
       <div class="row mb-3">
         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">First_Name</label>
         <div class="col-md-8 col-lg-9">
-          <input name="first_name" type="text" class="form-control" id="fullName" value="{{admin.user.first_name}}">
+          <input name="first_name" type="text" class="form-control" id="fullName" value="{{user.first_name}}">
         </div>
       </div>
       <div class="row mb-3">
         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Last_Name</label>
         <div class="col-md-8 col-lg-9">
-          <input name="last_name" type="text" class="form-control" id="fullName" value="{{admin.user.last_name}}">
+          <input name="last_name" type="text" class="form-control" id="fullName" value="{{user.last_name}}">
         </div>
       </div>
       <div class="row mb-3">
@@ -42,14 +43,14 @@
       <div class="row mb-3">
         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Username</label>
         <div class="col-md-8 col-lg-9">
-          <input name="username" type="text" class="form-control" id="fullName" value="{{admin.user.username}}">
+          <input name="username" type="text" class="form-control" id="fullName" value="{{user.username}}">
         </div>
       </div>
 
       <div class="row mb-3">
         <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
         <div class="col-md-8 col-lg-9">
-          <textarea name="about" class="form-control" id="about" style="height: 100px">{{admin.about}}
+          <textarea name="about" class="form-control" id="about" style="height: 100px">{{user.customer.about}}
           </textarea>
         </div>
       </div>
@@ -57,61 +58,51 @@
       <div class="row mb-3">
         <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
         <div class="col-md-8 col-lg-9">
-          <input name="company" type="text" class="form-control" id="company" value="{{admin.Company}}">
+          <input name="company" type="text" class="form-control" id="company" value="{{user.customer.Compan_name}}">
         </div>
       </div>
 
+      
+
       <div class="row mb-3">
-        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+        <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
         <div class="col-md-8 col-lg-9">
-          <input name="job" type="text" class="form-control" id="Job" value="{{admin.Job}}">
+          <input name="address" type="text" class="form-control" id="address" value="{{user.customer.address}}">
         </div>
       </div>
 
-      <div class="row mb-3">
-        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-        <div class="col-md-8 col-lg-9">
-          <input name="country" type="text" class="form-control" id="Country" value="{{admin.Country}}">
-        </div>
-      </div>
+     
 
       <div class="row mb-3">
-        <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+        <label for="Phone1" class="col-md-4 col-lg-3 col-form-label">Phone 1</label>
         <div class="col-md-8 col-lg-9">
-          <input name="address" type="text" class="form-control" id="Address" value="{{admin.address}}">
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone 1</label>
-        <div class="col-md-8 col-lg-9">
-          <input name="phone" type="text" class="form-control" id="Phone" value="{{admin.phone1}}">
+          <input name="phone1" type="text" class="form-control" id="Phone1" value="{{user.customer.phone1}}">
         </div>
       </div>
       <div class="row mb-3">
-        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone 2</label>
+        <label for="Phone2" class="col-md-4 col-lg-3 col-form-label">Phone 2</label>
         <div class="col-md-8 col-lg-9">
-          <input name="phone" type="text" class="form-control" id="Phone" value="{{admin.phone2}}">
+          <input name="phone2" type="text" class="form-control" id="Phone2" value="{{user.customer.phone2}}">
         </div>
       </div>
       <div class="row mb-3">
         <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Telegram Profile</label>
         <div class="col-md-8 col-lg-9">
-          <input name="telegram" type="text" class="form-control" id="Twitter" value="{{admin.telegram}}">
+          <input name="telegram" type="text" class="form-control" id="Twitter" value="{{user.customer.telegram}}">
         </div>
       </div>
 
       <div class="row mb-3">
         <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
         <div class="col-md-8 col-lg-9">
-          <input name="facebook" type="text" class="form-control" id="Facebook" value="{{admin.facebook}}">
+          <input name="facebook" type="text" class="form-control" id="Facebook" value="{{user.customer.facebook}}">
         </div>
       </div>
 
       <div class="row mb-3">
         <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
         <div class="col-md-8 col-lg-9">
-          <input name="instagram" type="text" class="form-control" id="Instagram" value="{{admin.instagram}}">
+          <input name="instagram" type="text" class="form-control" id="Instagram" value="{{user.customer.instagrm}}">
         </div>
       </div>
 

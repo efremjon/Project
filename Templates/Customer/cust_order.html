@@ -1,11 +1,10 @@
 {% extends 'Customer/Customer-base.html'%}
 {% load static %}
 {% block content %}
-
-    <div class="container-fluid mt-5 p-5">
+    <div class="container mt-5 pt-5">
       <section class="section ">
           <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-8">
               <div class="card">
                 <div class="card-body">
                   <!-- Order form with Validation -->
@@ -65,7 +64,8 @@
                 </div>
               </div>
               <!-- order summary -->
-              <div class="col-lg-5">
+              
+              <div class="col-lg-4">
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title text-center">Order summary</h5>
@@ -82,12 +82,13 @@
                         </div>
                         
                       </li>
-                     
+                     <form action="" method="post">
                       <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
                           <h6 class="my-0">St.George</h6>
+                          
                         </div>
-                        <span class="text-muted" id="show_george"></span>
+                        <input type="text" class="text-muted" name='george' id="show_george" value="">
                         <span class="text-muted" id="george_price"></span>
                       </li>
                       <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -141,7 +142,7 @@
                         <span class="text-muted" id="payment"></span>
                       </li>
                     </ul>  
-                  </div>
+                  </div></form>
                   <button id="orderbtn" class="btn btn-warning btn-md btn-block text-white" type="submit">Order</button>
                 </div>
               </div>
@@ -149,5 +150,38 @@
           </div>
         </section>
     </div>
-    
+
+    <script>
+      const select_george = document.getElementById("quantity_george");
+      const disp_george = document.getElementById("show_george");
+      const select_doppel = document.getElementById("quantity_doppel");
+      const disp_doppel = document.getElementById("show_doppel");
+      const select_castle = document.getElementById("quantity_castle");
+      const disp_castle = document.getElementById("show_castle");
+      const select_senq = document.getElementById("quantity_senq");
+      const disp_senq = document.getElementById("show_senq");
+      const order_date = document.getElementById("orderdate");
+      const today = new Date();
+      const day = `${today.getDate() < 10 ? "0"
+      : ""}${today.getDate() }`;
+      const month = `${(today.getMonth() + 1) < 10 ? "0"
+      : ""}${today.getMonth() + 1}`;
+      const year = today.getFullYear();
+      order_date.textContent =`${day}/${month}/${year}`;
+      const input_phone = document.getElementById("phonenum");
+      const disp_phone = document.getElementById("phonedisplay");
+      const select_payment = document.getElementById("paymentchoosen");
+      const display_payment = document.getElementById("payment");  
+      const checkout = document.getElementById("checkout");
+      
+      function getInputValues(){
+         disp_george.innerHTML = select_george.value;
+         disp_doppel.innerHTML = select_doppel.value;
+         disp_castle.innerHTML = select_castle.value;
+          disp_senq.innerHTML = select_senq.value;
+         disp_phone.innerHTML = input_phone.value;
+         display_payment.innerHTML = select_payment.value;  
+      }
+      checkout.addEventListener('click', getInputValues);
+     </script> 
 {% endblock %}

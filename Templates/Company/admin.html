@@ -21,6 +21,7 @@
             <!-- Sales Card -->
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
+                <a href="{% url 'admin-dashbord' %}"> 
                 <div class="card-body">
                   <h5 class="card-title">Agent </h5>
                   <div class="d-flex align-items-center">
@@ -32,12 +33,15 @@
                        </div>
                   </div>
                 </div>
+              </a>
               </div>
             </div><!-- End Sales Card -->
              <!-- Sales Card -->
              <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
+                  <a href="{% url 'dashbord-staff' %}">
+
                   <h5 class="card-title">Staff </h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -48,6 +52,7 @@
                        </div>
                   </div>
                 </div>
+              </a>
               </div>
             </div><!-- End Sales Card -->
 
@@ -55,6 +60,7 @@
              <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
+                  <a href="{% url 'dashbord-store' %}">
                   <h5 class="card-title">Store </h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -64,6 +70,7 @@
                       <h6>{{tottal_store}}</h6>
                        </div>
                   </div>
+                </a>
                 </div>
               </div>
             </div><!-- End Sales Card -->
@@ -72,6 +79,7 @@
              <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
+                  <a href="{% url 'dashbord-region' %}">
                   <h5 class="card-title">Region </h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -81,6 +89,7 @@
                       <h6>{{tottal_region}}</h6>
                        </div>
                   </div>
+                </a>
                 </div>
               </div>
             </div><!-- End Sales Card -->
@@ -89,6 +98,9 @@
              <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
+                  <a href="{% url 'dashbord-product' %}">
+
+                 
                   <h5 class="card-title">Product </h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -98,6 +110,7 @@
                       <h6>{{tottal_product}}</h6>
                        </div>
                   </div>
+                </a>
                 </div>
               </div>
             </div><!-- End Sales Card -->
@@ -122,11 +135,12 @@
             
           
      <div class="col-12">
+     
       <div class="card recent-sales overflow-auto">
+        {% block admin %}
         <div class="card-body">
           <h5 class="card-title">Agent</h5>
 
-         
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                       <thead>
@@ -154,9 +168,10 @@
                       </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-      
+                    </div>
+         {% endblock %}
 
-        </div>
+       
 
       </div>
     </div><!-- End Recent Sales -->
@@ -168,51 +183,6 @@
 
         <!-- Right side columns -->
         <div class="col-lg-4">
-
-            <!-- Primary Color Bordered Table -->
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Product in Store</h5>
-                <table class="table table-bordered border-primary">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Product</th>
-                      <th scope="col">Amount</th>
-                     
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Brandon Jacob</td>
-                      <td>Designer</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Brandon Jacob</td>
-                      <td>Designer</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Brandon Jacob</td>
-                      <td>Designer</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Brandon Jacob</td>
-                      <td>Designer</td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-                <!-- End Primary Color Bordered Table -->
-  
-              </div>
-            </div>
-              <!-- End Primary Color Bordered Table -->
-
-
           <!-- New Product advertisment -->
           <div class="card">
             <div class="card-body">
@@ -243,12 +213,11 @@
             </div>
           </section>
    </div><!-- End Right side columns -->
+
+   
       </div>
     </section>
-    {%for i in names %}
-    {{i}}
-    {% endfor %}
-    
+  
 
 </main>
 

@@ -1,4 +1,4 @@
-{% extends 'Customer/customer-base.html' %}
+{% extends 'Customer/Customer-base.html' %}
 {% block content %}
 {% load static %}
 
@@ -10,10 +10,11 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
               {% if user.customer.profile_pic %}
-              <img src="{{user.profile_pic.url}}" alt="Profile" >
+              <img style="height: 100px;width:100px;" src="{{user.customer.profile_pic.url}}" alt="Profile" >
               {% endif %}
-              <h2>{{user.first_name}} {{user.last_name}}</h2>
-              <h3>Hotel Name</h3>
+              <h5 style="color: black;">{{user.first_name}} {{user.last_name}}</h5>
+              <h5>Company name</h5>
+              <h6>{{user.customer.Compan_name}}</h6>
               <div class="social-links mt-2">
                 {% if user.admin.telegram and user.admin.telegram != 'None' %}
                 <a href="{{user.admin.telegram}}" class="telegram"><i class="bi bi-telegram"></i></a>
