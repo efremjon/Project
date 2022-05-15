@@ -1,0 +1,74 @@
+  <!-- ====== Main -->
+  {% extends 'Company/company-base.html'%}
+  {% block content%}
+  <!-- ====== Main -->
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Manage Products</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin.html">Home</a></li>
+          <li class="breadcrumb-item active">Update Product</li>
+        </ol>  
+      </nav>
+      
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-8">  
+            <div class="card">
+              <div class="card-body">
+                
+                <div class="pt-3">
+                    <div>
+                      <!-- Update product -->
+                      <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                          <label for="product image" class="col-md-4 col-lg-3 col-form-label">Product Image</label>
+                          <div class="col-md-8 col-lg-9">
+                            <img src="{{product.img.url}}" width="100"   alt="">
+                            <div class="pt-2">
+                              <a href="#" class="btn btn-primary btn-sm" title="Upload new product image"><i class="bi bi-upload"></i></a>
+                              <a href="#" class="btn btn-danger btn-sm" title="Remove product image"><i class="bi bi-trash"></i></a>
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="row mb-3">
+                          <label for="productname" class="col-md-4 col-lg-3 col-form-label">Product Name</label>
+                          <div class="col-md-8 col-lg-9">
+                            <input name="product_name" type="text" class="form-control" id="product_name" value="{{product.Product_Name}}">
+                          </div>
+                        </div>
+    
+                        <div class="row mb-3">
+                          <label for="single price" class="col-md-4 col-lg-3 col-form-label">Single Price</label>
+                          <div class="col-md-8 col-lg-9">
+                            <input name="single_price" type="text" class="form-control" id="single_price" value="{{product.Price_in_botle}}">
+                          </div>
+                        </div>
+    
+                        <div class="row mb-3">
+                          <label for="crate price" class="col-md-4 col-lg-3 col-form-label">Crate Price</label>
+                          <div class="col-md-8 col-lg-9">
+                            <input name="crate_price" type="text" class="form-control" id="crate_price" value="{{product.Price_in_creates}}">
+                          </div>
+                        </div>
+    
+                        <div class="text-center">
+                          <button id="save_changes" type="submit" class="btn btn-warning">Save Changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+  </main><!-- End #main -->
+{% endblock %}

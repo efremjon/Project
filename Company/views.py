@@ -1,4 +1,5 @@
-from cmath import tan
+
+
 from http.client import CONTINUE
 from multiprocessing import context
 from multiprocessing.dummy import JoinableQueue
@@ -190,7 +191,7 @@ def add_agent(request):
         agreement=request.FILES['agreement']
         licenc=request.FILES['licenc']
         form =NameForm(request.POST)
-        region = form.cleaned_data['Region']
+       
         if password1==password2:
             if User.objects.filter(username=user_name).exists():
                 messages.info(request, 'username taken')
@@ -203,9 +204,9 @@ def add_agent(request):
                 user.save()
                 group = Group.objects.get(name='Agent')
                 user.groups.add(group)
-                Agent.objects.create(user=user,phone1=phone1,phone2=phone2,facebook=facebook,telegram=telegram,instagram=instagram, about=about,profile_pic=profile_pic,city=city,address=address,location=location,TIN_NO=TIN_Num,agreement=agreement,License=licenc,Full_Name=Full_Name,Region=region)
-                messages.info(request, 'Sucssesfull Create User')
-                return redirect ('/')
+                Agent.objects.create(user=user,phone1=phone1,phone2=phone2,facebook=facebook,telegram=telegram,instagram=instagram, about=about,profile_pic=profile_pic,city=city,address=address,location=location,TIN_NO=TIN_Num,agreement=agreement,License=licenc,Full_Name=Full_Name)
+                messages.success(request, 'Sucssesfull Create User.')
+                return redirect ('agent-view')
         else:
             messages.info(request, 'PASSWORD NOT MUCH')
             return render(request,'Company/agents/add-agent.html',{})
@@ -435,6 +436,8 @@ def add_store_company(request):
         store=Company_Store.objects.create(Store_Name=Store_Name,Address=Address)
         Product_Amount_in_Store.objects.create(store=store)
         Company_Store_Manager.objects.create(Store=store)
+        messages.info(request, 'Store Successfully added')
+        
         return redirect('view-store')
     else:
         return render(request,'Company/store/add-store.html')
@@ -475,12 +478,51 @@ def view_region(request):
         'all_region' : all_region,
     }
     return render(request,'Company/region/region-view.html',context)
-
 def add_region(request):
     return render(request,'Company/region/add-region.html')
 
 # end Region
 
+
+
+# Manage Product
+
+def view_product(request):
+    all_product = Product.objects.all()
+    context = {
+        'all_product':all_product,
+    }
+    return render(request,'Company/product/view-products.html',context)
+
+def add_product(request):
+    if request.method == 'POST':
+        Product_Name=request.POST['product_name']
+        img=request.FILES['add_image']
+        Price_in_botle=request.POST['single_price']
+        Price_in_creates=request.POST['crate_price']
+        Product.objects.create(Product_Name=Product_Name,img=img,Price_in_botle=Price_in_botle,Price_in_creates=Price_in_creates)
+        messages.info(request, 'New Product Successfully added')
+        return redirect('view-product')
+    else:
+        return render(request,'Company/product/add-new-product.html')
+
+def update_product(request,pk):
+    product = Product.objects.get(id=pk)
+    if request.method == 'POST':
+        product.Product_Name=request.POST['product_name']
+        product.Price_in_botle=request.POST['single_price']
+        product.Price_in_creates=request.POST['crate_price']
+        product.save()
+        messages.info(request, 'Product Successfully Updated')
+        return redirect('view-product')
+    context = {
+        'product':product,
+    }
+    return render(request,'Company/product/update-product.html',context)
+       
+   
+
+# End Product
 def advertisments_view(request):
     return render(request,'Company/advertisments/advertisments.html')
 

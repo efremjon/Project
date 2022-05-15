@@ -180,38 +180,38 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-4">
-          <!-- New Product advertisment -->
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Advertisment</h5>
-          <section class="section add-agent">
-            <div class="row">
-              <div class="row justify-content-center">
-                <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
-                      <form class="row g-3 needs-validation" method="POST">
-                       {% csrf_token %}
-                        <div class="col-md-12">
-                          <textarea class="form-control" name="message" id="message" rows="6" placeholder="Description.......t" required></textarea>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="photo" class="form-label">Photo</label>
-                            <input type="file" name="driverPhoto" class="form-control" id="driverPhoto" required>
-                            <div class="invalid-feedback">Please upload photo!</div>
-                          </div>
-                        <hr class="mb-4">
-                          <div class="col-12">
-                            <button id="add_driver" class="btn btn-warning w-100 text-white" type="submit">Post</button>
-                          </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+        <!-- Advertisements-->
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h6><span class="badge bg-info">new</span></h6> 
+
+          <!-- Slides only carousel -->
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="assets/img/Doppel.jpeg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/sanjaw.jpeg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/Sen'q.jpeg" class="d-block w-100" alt="...">
               </div>
             </div>
-          </section>
-   </div><!-- End Right side columns -->
+          </div><!-- End Slides only carousel-->
+          <p>Check out BGI's new products joining the market soon. we are glad to tell you that
+            ....
+          </p>
 
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div><!-- End Advertisements -->
    
       </div>
     </section>

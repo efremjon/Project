@@ -25,6 +25,7 @@
   <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+  <link type="text/css" href="@@path/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
@@ -294,6 +295,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-region' %}">
           <i class="bi bi-bounding-box"></i> <span>Manage Region</span></i>
+        </a>
+        
+      </li>
+      <!-- manage product -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-product' %}">
+          <i class="bi bi-bounding-box"></i> <span>Manage Product</span></i>
         </a>
         
       </li>

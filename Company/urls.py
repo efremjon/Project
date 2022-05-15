@@ -58,6 +58,14 @@ urlpatterns = [
 
 # endregion part
 
+# Manage Product
+
+path('view_product/',views.view_product,name='view-product'),
+path('add_product/',views.add_product,name='add-product'),
+path('update_product/<int:pk>',views.update_product,name='update-product'),
+
+# End Product
+
 path('add_advertisments/',views.advertisments_view,name='add-advertisments'),
 
 # END Addivertisment

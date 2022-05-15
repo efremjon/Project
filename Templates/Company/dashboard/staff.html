@@ -16,6 +16,7 @@
                         <th scope="col">Position</th>
                         <th scope="col">Date</th>
                         <th scope="col">Phone</th>
+                        <th scope="col">View</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -26,6 +27,7 @@
                         <td>{{staff.staff}}</td>
                         <td>{{staff.date_created }}</td>
                         <td>{{staff.phone}}</td>
+                        <td>  <a href="{% url 'staff-detail' staff.id staff.staff %}" class="btn btn-info">View</a></td>
                       </tr>
                   {% endfor %}     
                   {% for staff in staff_company_store_manager %}
@@ -35,7 +37,7 @@
                         <td>{{staff.staff}}</td>
                         <td>{{staff.date_created }}</td>
                         <td>{{staff.phone}}</td>
-                        <td>  <a href="{% url  'staff-detail' staff.id staff.staff %}" class="btn btn-info">View</a></td>
+                        <td>  <a href="{% url 'staff-detail' staff.id staff.staff %}" class="btn btn-info">View</a></td>
                       </tr>
                   {% endfor %}             
                     </tbody>
