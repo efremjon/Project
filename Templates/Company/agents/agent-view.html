@@ -33,7 +33,8 @@
                       <th scope="col">Region</th>
                       <th scope="col">City</th>
                       <th scope="col">Phone</th>    
-                      <th scope="col">date_created</th>    
+                      <th scope="col">date_created</th>  
+                      <th scope="col">View</th>      
                     </tr>
                   </thead>
                   <tbody>
@@ -45,6 +46,7 @@
                       <td>{{agent.city}}</td>
                       <td>{{agent.phone1}}</td>
                       <td>{{agent.date_created}}</td>
+                      <td>  <a href="{% url 'agent-detail' agent.id %}" class="btn btn-info">View</a></td>
                       
                     </tr>
                     {% endfor %}

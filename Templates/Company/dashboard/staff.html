@@ -1,5 +1,5 @@
   <!-- ====== Main -->
-  {% extends 'Company/admin.html'%}
+  {% extends 'Company/dashboard/admin.html'%}
   {% block admin%}
     
   
@@ -35,6 +35,7 @@
                         <td>{{staff.staff}}</td>
                         <td>{{staff.date_created }}</td>
                         <td>{{staff.phone}}</td>
+                        <td>  <a href="{% url  'staff-detail' staff.id staff.staff %}" class="btn btn-info">View</a></td>
                       </tr>
                   {% endfor %}             
                     </tbody>
