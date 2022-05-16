@@ -71,6 +71,10 @@ path('add_advertisments/',views.advertisments_view,name='add-advertisments'),
 # END Addivertisment
 
 
+# Report 
+ path('view_report/',views.view_report,name='view-report'),
+
+# END Report
 
 # store manager 
 

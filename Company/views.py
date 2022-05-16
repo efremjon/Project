@@ -558,7 +558,11 @@ def aprove_order_view(request):
 
 # END store manager
 
+# Report
+def view_report(request):
+    return render(request,'Company/report/a.html',{})
 
+# END Report
 
 #  Finance admin
 

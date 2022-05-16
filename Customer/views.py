@@ -1,4 +1,5 @@
 from http.client import CONTINUE
+from itertools import product
 from multiprocessing import context
 from multiprocessing.dummy import JoinableQueue
 from django.contrib import messages
@@ -9,9 +10,11 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
 from Agent.models import Customer
+from Company.models import Product
 from .models import Customer_order
 from .form import passwordform
 from django.core.mail import send_mail
+
 
 from django.shortcuts import render
 
@@ -19,23 +22,35 @@ from django.shortcuts import render
 
 
 def Customer_dashboard(request):
-    customer_orders=Customer_order.objects.filter(id=request.user.customer.id)
+    customer_orders=Customer_order.objects.filter(Customer=request.user.customer)
+    products=Product.objects.all()
     orders=customer_orders
     total_pending=0
     total_received=0
     total_paid=0
     total_rejected=0
+    total_quantity=[]
+    # for order in orders:
+    #     for product in products:
+    #         total_quantity+=getattr(order,product.Product_Name)
+        
+    
   
     for order in orders:
         total_paid+=order.total_payment
         if order.status == 'Pending':
             total_pending+=1
-        elif order.status == 'Out for Delivery':
+        elif order.status == 'Out for delivery':
             total_rejected+=1
         elif order.status == 'Delivered':
             total_received+=1
-
-    context={'customer_orders':customer_orders,'total_pending':total_pending,'total_rejected':total_rejected,'total_rejected':total_rejected,'total_received':total_received}
+        total_paid
+    context={'customer_orders':customer_orders,
+    'total_payment':total_paid,'total_pending':total_pending,
+    'total_rejected':total_rejected,
+    'total_received':total_received,
+    'total_quantity':total_quantity
+    }
     return render(request,'Customer/home.html',context)
     
 # User Profile
@@ -104,20 +119,32 @@ def delete_profile_pic(request):
 
 
 def make_order(request):
-    return render(request,'Customer/cust_order.html')
+    products=Product.objects.all()
+    
+    context={
+        'products':products,
+    
+    }
+
+    return render(request,'Customer/cust_order.html',context)
 
 def send_delivery(request):
-    delivereds=Customer_order.objects.filter(status='Pending')
+
+    delivereds=Customer_order.objects.filter(status='Pending',Customer=request.user.customer)
+    products=Product.objects.all()
     tests=delivereds
     quantity=[]
     for test in tests:
-        quantity.append(test.castel+test.castel+test.doppel+test.senq+test.george)
+        total_quantity=0
+        for product in products:
+            total_quantity+=getattr(test,product.Product_Name)
+        quantity.append(total_quantity)
 
     context={'deliverds':delivereds,'quantity':quantity}
     return render(request,'Customer/send-delivery-status.html',context)
 
 def transaction_history(request):
     
-    customer_orders=Customer_order.objects.all()
+    customer_orders=Customer_order.objects.filter(Customer=request.user.customer)
     context={'customer_orders':customer_orders}
     return render(request,'Customer/transaction_history.html',context)

@@ -8,54 +8,58 @@
   <title>BGI Ethiopia</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-{% load static %}
+
   <!-- Favicons -->
-  <link href="{% static 'assets/img/logo2.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="assets/img/logo2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="{% static 'https://fonts.gstatic.com" rel="preconnect">
-  <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
-  <link type="text/css" href="@@path/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.2.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
-  
+
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-    <a href="{% url 'admin-dashbord' %}" class="logo d-flex align-items-center">
-        <img src="{% static 'assets/img/logo3.png' %}" alt="">
+      <a href="admin.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo3.png" alt="">
 
       </a>
-     
+      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-  
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
 
@@ -129,6 +133,7 @@
             </li>
           </ul><!-- End Notification Dropdown Items -->
         </li><!-- End Notification Nav -->
+       
         <li class="nav-item dropdown">
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-chat-left-text"></i>
@@ -146,7 +151,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="{% static 'assets/img/messages-1.jpg' %}" alt="" class="rounded-circle">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>Agent 'X'</h4>
                   <p>Please schehule us fast enough...</p>
@@ -160,7 +165,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="{% static 'assets/img/messages-2.jpg' %}" alt="" class="rounded-circle">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>Finance manager 'X'</h4>
                   <p>Need to talk...</p>
@@ -174,7 +179,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="{% static 'assets/img/messages-3.jpg' %}" alt="" class="rounded-circle">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>G/Egziabher G/Selassie</h4>
                   <p>We want to re-schedule...</p>
@@ -197,15 +202,13 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            {% if user.admin.profile_pic %}
-            <img src="{{user.admin.profile_pic.url}}" alt="Profile" class="rounded-circle">
-            {% endif %}
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.first_name}} {{user.last_name}}</span>
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Ato Chanyalew</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{user.first_name}} {{user.last_name}}</h6>
+              <h6>Ato Chanyalew</h6>
               <span>Company Admin</span>
             </li>
            
@@ -214,7 +217,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'show_profile' %}">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -224,7 +227,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'login' %}">
+              <a class="dropdown-item d-flex align-items-center" href="admin-login.html">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -244,91 +247,170 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{% url 'admin-dashbord' %}">
+        <a class="nav-link " href="admin.html">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
         
       <!-- agent -->
-       <!-- agent -->
-       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#agents-nav"  href="{%  url 'agent-view'  %}">
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#agents-nav"  href="manage-products.html">
           <i class="ri-admin-fill"></i><span>Manage Agents</span>
         </a>
       </li>
+      
       <!-- staff -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#agents-nav"  href="{% url 'view-staff' %}">
-          <i class="ri-admin-line"></i><span>Manage Staff</span>
+        <a class="nav-link collapsed" data-bs-target="#staffs-nav" href="staff-view.html">
+          <i class="ri-admin-line"></i><span>Manage staff</span>
         </a>
       </li>
 
-      <!-- finance
+      <!-- finance -->
       <li class="nav-item"> 
         <a class="nav-link collapsed" data-bs-target="#finance-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-currency-dollar"></i><span>Finance</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="finance-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{% url 'view-agent-orders' %}">
+            <a href="view-agent-orders.html">
               <i class="bi bi-cart"></i><span>View orders</span>
             </a>
           </li>
           <li>
-            <a href="{% url 'approve-agent-orders' %}">
+            <a href="approve-agent-orders.html">
               <i class="bi bi-cart-check"></i><span>Approve orders</span>
             </a>
           </li>
         </ul>
-      </li> -->
+      </li>
       
       <!-- store manager-->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-store' %}">
-          <i class="ri-home-2-line"></i><span>Manage Store</span></i>
+        <a class="nav-link collapsed" data-bs-target="#store-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-home-2-line"></i><span>Store</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      
+        <ul id="store-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="store.html">
+              <i class="ri-home-3-line"></i><span>view store</span>
+            </a>
+          </li>
+          <li>
+            <a href="contact-store-manager.html">
+              <i class="bi bi-telephone"></i><span>contact</span>
+            </a>
+          </li>
+        </ul>
       </li>
-      
-      <!-- Region manager-->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-region' %}">
-          <i class="bi bi-bounding-box"></i> <span>Manage Region</span></i>
-        </a>
-        
-      </li>
-      <!-- manage product -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#store-nav"  href="{% url 'view-product' %}">
-          <i class="bi bi-bounding-box"></i> <span>Manage Product</span></i>
-        </a>
-        
-      </li>
+
       <!-- Generate report -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#reports-nav"href="{% url 'view-report' %}">
-          <i class="bi bi-journal-text"></i><span>Generate Report</span>
+        <a class="nav-link collapsed" data-bs-target="#reports-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Generate Report</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      
+        <ul id="reports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="agent-report.html">
+              <i class="ri-file-list-3-line"></i><span>Agents report</span>
+            </a>
+          </li>
+          <li>
+            <a href="finance-report.html">
+              <i class="ri-file-list-3-line"></i><span>Finance report</span>
+            </a>
+          </li>
+        </ul>
       </li>
       
       <!-- Post advertisement -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{% url 'add-advertisments' %}">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="advertisements.html">
           <i class="ri-advertisement-line"></i><span>Post adverisements</span>
         </a>
       </li>
 
     </ul>
-</aside><!-- End Sidebar-->
 
- {% block content %}
+  </aside><!-- End Sidebar-->
 
- {% endblock %}
+  <!-- ====== Main -->
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Generate Report</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin.html">Home</a></li>
+          <li class="breadcrumb-item active">Report</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
- <!-- ======= Footer ======= -->
- <footer id="footer" class="footer">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+
+                <div class="text-end">
+                    <button id="download_excel" type="button" class="btn btn-secondary btn-sm">Excel</button>
+                    <button id="download_excel" onclick="pdfDownload()" type="button" class="btn btn-secondary btn-sm">Pdf</button>
+                </div>
+                <br>
+                <br>
+
+              <!-- transaction view -->
+              <div class="col">
+                <div class="card recent-sales overflow-auto">
+  
+                  <div class="card-body">
+                    <table id="report_table" class="table table-border datatable">
+                      <thead>
+                        <tr>
+                          <th scope="col">Finance Manager</th>
+                          <th scope="col">Agent</th>
+                          <th scope="col">Products</th>
+                          <th scope="col">Quantinty(crates)</th>
+                          <th scope="col">Amoun Paid</th>
+                          <th scope="col">Issuing Store</th>  
+                          <th scope="col">Date</th>                    
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>Beyene Pertos</th> 
+                          <td>Gebre Eg/r Gebre Eyesus</td>
+                          <td>St. George, Doppel</td>
+                          <td>5000, 4000</td>
+                          <td>2,233,455</td>
+                          <td>Awasa St. George Brewery</td>
+                          <td>28-8-2021</td>
+                        </tr>
+                        <tr>
+                            <th>Girma Kassahun</th> 
+                            <td>Alewya ahmed</td>
+                            <td>Castle</td>
+                            <td>5000</td>
+                            <td>1,456,123</td>
+                            <td>Zeway Castle Brewery</td>
+                            <td>28-8-2021</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div><!-- End transaction Sales -->
+          
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>BGI Ethiopia</span></strong>. All Rights Reserved
     </div>
@@ -338,16 +420,15 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/chart.js/chart.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/echarts/echarts.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/quill/quill.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
-  <script src="{% static 'assets/vendor/tinymce/tinymce.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
- 
- 
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
@@ -355,11 +436,32 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 <script src="table2excel.js"></script>
   <!-- Template Main JS File -->
-
+  <script src="assets/js/main.js"></script>
 
   <script src="table2excel.js"></script>
-  <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    document.getElementById('download_excel').addEventListener('click', function(){
+        var table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll("#report_table"));
+    });  
+</script>
+
+<script type="text/javascript">
+  function pdfDownload() {
+      html2canvas(document.getElementById('report_table'), {
+          onrendered: function (canvas) {
+              var data = canvas.toDataURL();
+              var docDefinition = {
+                  content: [{
+                      image: data,
+                      width: 500
+                  }]
+              };
+              pdfMake.createPdf(docDefinition).download("Table.pdf");
+          }
+      });
+  }
+</script>
 
 </body>
 
