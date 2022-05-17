@@ -1,0 +1,69 @@
+{% extends 'Customer/Customer-base.html'%}
+{% load static %}
+{% block content %}
+    <div class="container mt-5 pt-5">
+      <section class="section ">
+          <div class="row">
+            <div class="col-lg-2">
+               
+            </div>
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <!-- Order form with Validation -->
+                  <form class="row g-3 needs-validation" action="{% url 'order_summer' %}" method="POST">
+                    {% csrf_token %}
+                    <h5 class="card-title text-center">Checkout form</h5>
+                    <!-- here all the input filed comes from db table called Product -->
+                   
+                  {% for product in all_product %}
+                    <div class="col-md-6">
+                      <input type="number" min="4" class="form-control" name="{{product.Product_Name}}" id="{{product.Product_Name}}" placeholder="{{product.Product_Name}}" required>
+                      <div class="invalid-feedback">
+                        Minimum of 4 crates
+                      </div>
+                    </div> 
+                    <br>
+<br>
+                  {% endfor %}
+
+                    <hr class="mb-2 "> 
+                 
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="phonenum" required>
+                        <div class="invalid-feedback">
+                          Please provide an active phone number.
+                        </div>
+                    </div>
+                    <!-- payment option should come from available payment option from db table payment option -->
+                   
+                    <div class="col-md-6">
+                      <label for="payment option" class="form-label">Store</label>
+                      <select class="form-select" id="paymentchoosen" required>
+                        <option selected disabled value="">Choose Store</option>
+                        {% for store in all_store %}
+                        <option>{{store.Store_Name}}</option>
+                        {% endfor %}
+                      </select>
+                      <div class="invalid-feedback">
+                        select payment option please
+                      </div>
+                    </div>
+                    <hr class="mb-4">   
+                    <button id="checkout" class="btn btn-warning btn-md btn-block text-white" type="submit">Continue to check out</button>
+                  
+                  </form><!-- End  of order form -->
+                  </div>
+                </div>
+              </div>
+              <!-- order summary -->
+              
+              <div class="col-lg-2">
+               
+              </div>
+  
+          </div>
+        </section>
+    </div>
+{% endblock %}

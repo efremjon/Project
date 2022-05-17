@@ -1,0 +1,91 @@
+{% extends 'Customer/Customer-base.html'%}
+{% load static %}
+{% block content %}
+    <div class="container mt-5 pt-5">
+      <section class="section ">
+          <div class="row"> 
+            <div class="col-lg-3">
+                </div>
+           <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Order summary</h5>
+                    <ul class="list-group">
+                      <li class="list-group-item d-flex justify-content-between lh-con  densed">
+                        <div>
+                          <h6 class="my-0">Product</h6>
+                        </div>
+                        <div>
+                            <h6 class="my-0">Unit-Price</h6>
+                          </div>
+                        <div>
+                          <h6 class="my-0">Quantity</h6>
+                        </div>
+
+                        <div>
+                            <h6 class="my-0">Total-Price</h6>
+                          </div>
+                        
+                        
+                      </li>
+                     <form action="" method="post">
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        {% for product, x in all_product, ary %}
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                          <div>
+                            <h6 class="">{{product.Product_Name}}</h6>
+                             <!-- - - - {{product.Product_Name}} - - - {{product.Product_Name}}</h6> -->
+        
+                          </div>
+                          <span class="text-muted" id="george_price">323232</span>
+                          
+                          <span type="text" class="text-muted" name='george' id="show_{{product.Product_Name}}" value="">{{arry}}</span>
+                          <span type="text" class="text-muted" name='george' id="show_{{product.Product_Name}}" value="">0</span>
+                          
+                        </li>
+                       {% endfor %}
+                       
+                        <li class="list-group-item d-flex justify-content-between">
+                          <span>Total price</span>
+                        
+                          <span class="text-muted" id="show_total_price">{{ary[Product_Name]}}</span>
+                        </li>
+                      <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-muted">
+                          <h6 class="my-0">Order date</h6>
+                        </div>
+                        <span class="text-success">
+    
+                          <div class="text-success">
+                              <span id="orderdate"></span>
+                        </div>
+                        </span>
+                      </li>
+                       {% for a in ary %}
+                        
+                         {{a}}
+
+                       {% endfor %}
+
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Phone</h6>
+                        </div>
+                        <span class="text-muted" id="phonedisplay"></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Payment</h6>
+                        </div>
+                        <span class="text-muted" id="payment"></span>
+                      </li>
+                    </ul>  
+                  </div></form>
+                  <button id="orderbtn" class="btn btn-warning btn-md btn-block text-white" type="submit">pay by Yenpay</button>
+                </div>
+</div>
+</div>
+</section>
+</div>
+{% endblock %}    
+    
