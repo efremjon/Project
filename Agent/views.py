@@ -121,6 +121,7 @@ def make_order(request):
 def order_summer(request):
     all_product = Product.objects.all()
     all_store = Company_Store.objects.all()
+<<<<<<< HEAD
     ary1=[]
     ary2=[]
     a=0
@@ -134,13 +135,26 @@ def order_summer(request):
             tl=tl+tp
             
     mylist = zip(all_product,ary1,ary2)        
+=======
+    ary=[]
+    a=0
+    if request.method == 'POST':
+        for product in all_product:
+            a=request.POST[product.Product_Name]
+            ary.append(a)
+            
+>>>>>>> c40150777447daa0217a7fc7443b2f52df083f9a
     context = {
          'all_product' : all_product,
          'all_store':all_store,
          'a':a,
+<<<<<<< HEAD
          'ary':ary1,
          'mylist':mylist,
          'tl':tl,
+=======
+         'ary':ary
+>>>>>>> c40150777447daa0217a7fc7443b2f52df083f9a
 
      }
     return render(request,'Agent/order_summer.html',context)

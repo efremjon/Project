@@ -105,6 +105,7 @@ class Agent_order(models.Model):
 			('Out for delivery', 'Out for delivery'),
 			('Delivered', 'Delivered'),
 			) 
+<<<<<<< HEAD
 	
 	Agent = models.ForeignKey(Agent, on_delete= models.SET_NULL, null=True)
 	total_payment=models.FloatField(default=0.0,null=True,blank=True)
@@ -117,5 +118,17 @@ class Agent_order(models.Model):
 products=Product.objects.all()
 for product in products:
     Agent_order.add_to_class(product.Product_Name,models.IntegerField(default=0))  
+=======
+>>>>>>> c40150777447daa0217a7fc7443b2f52df083f9a
 	
+
+	Agent = models.ForeignKey(Agent, on_delete= models.SET_NULL, null=True)
+	
+	date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+	status = models.CharField(max_length=200, null=True, choices=STATUS)
+	def __str__(self) -> str:
+		return str(self.Agent)
+products=Product.objects.all()
+for product in products:
+	Agent_order.add_to_class(product.Product_Name,models.IntegerField(default=0))
 
