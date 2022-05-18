@@ -9,6 +9,7 @@ from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
+from django.urls import reverse_lazy
 from Agent.models import Customer
 from Company.models import Product
 from .models import Customer_order
@@ -22,36 +23,42 @@ from django.shortcuts import render
 
 
 def Customer_dashboard(request):
-    customer_orders=Customer_order.objects.filter(Customer=request.user.customer)
-    products=Product.objects.all()
-    orders=customer_orders
-    total_pending=0
-    total_received=0
-    total_paid=0
-    total_rejected=0
-    total_quantity=[]
-    # for order in orders:
-    #     for product in products:
-    #         total_quantity+=getattr(order,product.Product_Name)
-        
-    
-  
-    for order in orders:
-        total_paid+=order.total_payment
-        if order.status == 'Pending':
-            total_pending+=1
-        elif order.status == 'Out for delivery':
-            total_rejected+=1
-        elif order.status == 'Delivered':
-            total_received+=1
-        total_paid
-    context={'customer_orders':customer_orders,
-    'total_payment':total_paid,'total_pending':total_pending,
-    'total_rejected':total_rejected,
-    'total_received':total_received,
-    'total_quantity':total_quantity
-    }
-    return render(request,'Customer/home.html',context)
+    #context={}
+    #if request.user.is_authenticated:
+           # if request.user.groups=='Customer':
+                customer_orders=Customer_order.objects.filter(Customer=request.user.customer)
+                products=Product.objects.all()
+                orders=customer_orders
+                total_pending=0
+                total_received=0
+                total_paid=0
+                total_rejected=0
+                total_quantity=[]
+            # for order in orders:
+            #     for product in products:
+            #         total_quantity+=getattr(order,product.Product_Name)
+                
+            
+
+                for order in orders:
+                    total_paid+=order.total_payment
+                    if order.status == 'Pending':
+                        total_pending+=1
+                    elif order.status == 'Out for delivery':
+                        total_rejected+=1
+                    elif order.status == 'Delivered':
+                        total_received+=1
+                    total_paid
+                context={'customer_orders':customer_orders,
+                'total_payment':total_paid,'total_pending':total_pending,
+                'total_rejected':total_rejected,
+                'total_received':total_received,
+                'total_quantity':total_quantity
+                }
+
+          #  else:
+               # return redirect('login')
+                return render(request,'Customer/home.html',context)
     
 # User Profile
 def show_profile(request):

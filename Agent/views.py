@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
@@ -7,7 +8,7 @@ from django.contrib.auth.models import User,Group
 from django.contrib.auth.forms import PasswordChangeForm
 from .form import *
 from .models import *
-from Company.models import Agent
+from Company.models import * 
 
 
 # Create your views here.
@@ -109,8 +110,40 @@ def customer_order(request):
      return render(request,'Agent/view-cust-orders.html',{})
      
 def make_order(request):
+     all_product = Product.objects.all()
+     all_store = Company_Store.objects.all()
+     context = {
+         'all_product' : all_product,
+         'all_store':all_store,
+     }
+     return render(request,'Agent/cust_order.html',context)
 
-     return render(request,'Agent/g.html',{})
+def order_summer(request):
+    all_product = Product.objects.all()
+    all_store = Company_Store.objects.all()
+    ary1=[]
+    ary2=[]
+    a=0
+    tl=0
+    if request.method == 'POST':
+        for product in all_product:
+            a=request.POST[product.Product_Name]
+            tp=product.Price_in_creates * int(request.POST[product.Product_Name])
+            ary1.append(a)
+            ary2.append(tp)
+            tl=tl+tp
+            
+    mylist = zip(all_product,ary1,ary2)        
+    context = {
+         'all_product' : all_product,
+         'all_store':all_store,
+         'a':a,
+         'ary':ary1,
+         'mylist':mylist,
+         'tl':tl,
+
+     }
+    return render(request,'Agent/order_summer.html',context)
 
 def manage_customers(request):
 
@@ -131,5 +164,4 @@ def transactions(request):
 def send_message(request):
 
      return render(request,'Agent/send-message.html',{})
-
 

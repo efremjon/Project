@@ -16,6 +16,7 @@ urlpatterns = [
 
     path('cusomer_order/',views.customer_order,name="customer_order"),
     path('agent_make_order/',views.make_order,name="agent_make_order"),
+    path('order_summer/',views.order_summer,name="order_summer"),
     path('manage_customers/',views.manage_customers,name="manage_customers"),
     path('manage_drivers/',views.manage_drivers,name="manage_drivers"),
     path('transactions/',views.transactions,name="transactions"),
